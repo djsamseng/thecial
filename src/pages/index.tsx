@@ -1,4 +1,6 @@
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 import LayoutComponent from "../components/layout";
 
@@ -16,6 +18,7 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
         <p>Find that the gift for the special someone</p>
         <br/>
         <p>Grandpa + Favorite bird + Golf = Grandpa's Favorite Birdie</p>
+        <StaticImage alt="Grandpa's favorite birdie" src="../images/grandpas_favorite_birdie.png"/>
       </LayoutComponent>
     );
   }
