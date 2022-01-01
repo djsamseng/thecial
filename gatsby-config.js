@@ -3,5 +3,7 @@ module.exports = {
     siteUrl: "https://www.yourdomain.tld",
     title: "thecial",
   },
-  plugins: [],
+  plugins: [
+    "gatsby-plugin-dts-css-modules"
+  ],
 };
