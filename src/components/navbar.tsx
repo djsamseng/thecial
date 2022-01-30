@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import * as navbarStyles from "./navbar.module.css";
-
 type NavBarProps = {};
 type NavBarState = {};
 class NavBar extends React.Component<NavBarProps, NavBarState> {
@@ -16,16 +14,16 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
       { text: "Blog", href: "/blog" },
     ].map(item => {
       return (
-        <li className={navbarStyles.navLinkItem}>
-          <Link to={item.href} className={navbarStyles.navLinkText}>
+        <li>
+          <Link to={item.href} className="hover:text-gray-200">
             {item.text}
           </Link>
         </li>
       )
     });
     return (
-      <nav>
-        <ul className={navbarStyles.navLinks}>
+      <nav className="" aria-label="Desktop Navigation">
+        <ul className="md:flex px-4 mx-auto font-semibold font-heading space-x-12">
           {liItems}
         </ul>
       </nav>

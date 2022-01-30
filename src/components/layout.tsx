@@ -1,9 +1,8 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 
-import * as layoutStyles from "./layout.module.css";
 import NavBar from "./navbar";
-
+import SearchBar from "./searchbar";
 
 type LayoutComponentProps = {
   pageTitle: string;
@@ -22,8 +21,102 @@ const TitleComponent = () => {
     }
   `);
   return (
-    <header className={layoutStyles.siteTitle}>{data.site.siteMetadata.title}</header>
-  )
+    <div className="text-3xl font-bold font-heading">
+      <p className="sr-only">{data.site.siteMetadata.title}</p>
+      <Link to="/">{data.site.siteMetadata.title}</Link>
+    </div>
+  );
+  // <header className="text-3xl font-bold font-heading">{data.site.siteMetadata.title}</header>
+}
+
+type ControlsPanelProps = {};
+type ControlsPanelState = {
+  theme: string;
+};
+class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelState> {
+  constructor(props: ControlsPanelProps) {
+    super(props);
+    this.state = {
+      theme: "light",
+    }
+  }
+
+  public componentDidMount(): void {
+      window.__onThemeChange = function() {};
+      var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      darkQuery.addListener(function(e) {
+        console.log("HERE!");
+        return;
+        window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+      })
+  }
+
+  public render() {
+    let icon = this.state.theme === "dark" ?
+      (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+
+          </path>
+        </svg>
+      )
+      :
+      (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>);
+    return (
+      <div className="flex mr-6 items-center">
+        <button className="" onClick={this.onToggleDarkTheme.bind(this)}>
+          {icon}
+        </button>
+      </div>
+    );
+  }
+
+  private onToggleDarkTheme() {
+    // TODO: global.css needs to be updated without messing up the layout
+    console.log("Toggle:", this.state.theme);
+    const newTheme = this.state.theme === "light" ? "dark" : "light";
+    if (document.body.classList.contains(this.state.theme)) {
+      document.body.classList.replace(this.state.theme, newTheme);
+    }
+    else {
+      document.body.classList.add(newTheme);
+    }
+    window.__theme = newTheme;
+    window.__onThemeChange();
+    try {
+      localStorage.setItem("theme", newTheme);
+    }
+    catch (error) {
+      console.error("Failed to set theme into localStorage", error);
+    }
+    this.setState({
+      theme: newTheme
+    });
+  }
+}
+
+type HeaderComponentProps = {};
+type HeaderComponentState = {};
+class HeaderComponent extends React.Component<HeaderComponentProps, HeaderComponentState> {
+  constructor(props: HeaderComponentProps) {
+    super(props);
+  }
+
+  public render() {
+    return (
+      <header className="flex flex-wrap place-items-center h-screen">
+        <section className="relative mx-auto">
+          <div className="flex justify-between bg-gray-900 text-white w-screen">
+            <div className="px-5 xl:px-12 py-6 flex w-full items-center"></div>
+              <TitleComponent />
+              <NavBar />
+              <ControlsPanel />
+          </div>
+        </section>
+      </header>
+
+    );
+  }
 }
 
 class LayoutComponent extends React.Component<LayoutComponentProps, LayoutComponentState> {
@@ -34,12 +127,11 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
 
   public render() {
     return (
-      <div className={layoutStyles.container}>
+      <div className="">
         <title>{this.props.pageTitle}</title>
-        <TitleComponent />
-        <NavBar />
+        <HeaderComponent />
         <main>
-          <h1 className={layoutStyles.heading}>
+          <h1 className="text-3xl font-bold font-heading">
             {this.props.pageTitle}
           </h1>
           {this.props.children}

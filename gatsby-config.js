@@ -19,6 +19,7 @@ module.exports = {
       }
     },
     "gatsby-plugin-mdx",
+    "gatsby-plugin-postcss",
     "gatsby-plugin-preact",
     "gatsby-transformer-sharp"
   ],
