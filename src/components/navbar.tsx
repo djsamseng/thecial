@@ -22,14 +22,14 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
           </Link>
         </li>
       )
-    })
+    });
     return (
       <nav>
         <ul className={navbarStyles.navLinks}>
           {liItems}
         </ul>
       </nav>
-    )
+    );
   }
 }
 

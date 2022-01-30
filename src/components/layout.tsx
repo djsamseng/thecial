@@ -5,7 +5,6 @@ import * as layoutStyles from "./layout.module.css";
 import NavBar from "./navbar";
 
 
-
 type LayoutComponentProps = {
   pageTitle: string;
   children: React.ReactNode;
@@ -38,7 +37,7 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
       <div className={layoutStyles.container}>
         <title>{this.props.pageTitle}</title>
         <TitleComponent />
-        <NavBar></NavBar>
+        <NavBar />
         <main>
           <h1 className={layoutStyles.heading}>
             {this.props.pageTitle}

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
@@ -13,6 +17,9 @@ module.exports = {
         name: "blog",
         path: `${__dirname}/data/blog`
       }
-    }
+    },
+    "gatsby-plugin-mdx",
+    "gatsby-plugin-preact",
+    "gatsby-transformer-sharp"
   ],
 };
