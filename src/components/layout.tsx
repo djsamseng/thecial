@@ -37,18 +37,14 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
   constructor(props: ControlsPanelProps) {
     super(props);
     this.state = {
-      theme: "light",
+      theme: typeof window !== 'undefined' ? window.__theme : null,
     }
   }
 
   public componentDidMount(): void {
-      window.__onThemeChange = function() {};
-      var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      darkQuery.addListener(function(e) {
-        console.log("HERE!");
-        return;
-        window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-      })
+    window.__onThemeChange = () => {
+      this.setState({ theme: window.__theme })
+    }
   }
 
   public render() {
@@ -72,26 +68,8 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
   }
 
   private onToggleDarkTheme() {
-    // TODO: global.css needs to be updated without messing up the layout
-    console.log("Toggle:", this.state.theme);
     const newTheme = this.state.theme === "light" ? "dark" : "light";
-    if (document.body.classList.contains(this.state.theme)) {
-      document.body.classList.replace(this.state.theme, newTheme);
-    }
-    else {
-      document.body.classList.add(newTheme);
-    }
-    window.__theme = newTheme;
-    window.__onThemeChange();
-    try {
-      localStorage.setItem("theme", newTheme);
-    }
-    catch (error) {
-      console.error("Failed to set theme into localStorage", error);
-    }
-    this.setState({
-      theme: newTheme
-    });
+    window.__setPreferredTheme(newTheme);
   }
 }
 
@@ -106,7 +84,7 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
     return (
       <header className="flex flex-wrap place-items-center h-screen">
         <section className="relative mx-auto">
-          <div className="flex justify-between bg-gray-900 text-white w-screen">
+          <div className="flex justify-between bg-gray-100 dark:bg-gray-900 text-black dark:text-white w-screen">
             <div className="px-5 xl:px-12 py-6 flex w-full items-center"></div>
               <TitleComponent />
               <NavBar />
