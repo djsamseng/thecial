@@ -21,7 +21,7 @@ const TitleComponent = () => {
     }
   `);
   return (
-    <div className="text-3xl font-bold font-heading">
+    <div className="font-bold font-heading text-3xl">
       <p className="sr-only">{data.site.siteMetadata.title}</p>
       <Link to="/">{data.site.siteMetadata.title}</Link>
     </div>
@@ -82,10 +82,9 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
 
   public render() {
     return (
-      <header className="flex flex-wrap place-items-center h-screen">
-        <section className="relative mx-auto">
-          <div className="flex justify-between bg-gray-100 dark:bg-gray-900 text-black dark:text-white w-screen">
-            <div className="px-5 xl:px-12 py-6 flex w-full items-center"></div>
+      <header className="bg-gray-100 border-b dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0">
+        <section className="container px-4 py-5 mx-auto">
+          <div className="flex flex-row justify-between">
               <TitleComponent />
               <NavBar />
               <ControlsPanel />
@@ -105,11 +104,11 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
 
   public render() {
     return (
-      <div className="">
+      <div className="min-h-screen w-full font-roboto dark:bg-gray-900 dark:text-slate-200">
         <title>{this.props.pageTitle}</title>
         <HeaderComponent />
-        <main>
-          <h1 className="text-3xl font-bold font-heading">
+        <main className="">
+          <h1 className="">
             {this.props.pageTitle}
           </h1>
           {this.props.children}
@@ -120,3 +119,4 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
 }
 
 export default LayoutComponent;
+

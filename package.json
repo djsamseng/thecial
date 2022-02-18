@@ -12,7 +12,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "css": "npx tailwindcss -i src/styles/input.css -o src/styles/global.css --watch"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",

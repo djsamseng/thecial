@@ -18,6 +18,13 @@ module.exports = {
         path: `${__dirname}/data/blog`
       }
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "gifts",
+        path: `${__dirname}/data/gifts`
+      }
+    },
     "gatsby-plugin-mdx",
     "gatsby-plugin-postcss",
     "gatsby-plugin-preact",

@@ -10,6 +10,7 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
   public render() {
     const liItems = [
       { text: "Home", href: "/" },
+      { text: "Gifts", href: "/gifts" },
       { text: "Guide", href: "/guide" },
       { text: "Blog", href: "/blog" },
     ].map(item => {
