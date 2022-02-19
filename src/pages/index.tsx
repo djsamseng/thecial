@@ -15,7 +15,7 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
   render() {
     return (
       <LayoutComponent pageTitle="Home Page">
-        <h1>Thecial</h1>
+        <h1>Gather Badger</h1>
         <p>Find that the gift for the special someone</p>
         <br/>
         <p>Grandpa + Favorite bird + Golf = Grandpa's Favorite Birdie</p>

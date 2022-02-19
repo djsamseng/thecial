@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Thecial",
+    siteUrl: "https://www.gatherbadger.com",
+    title: "Gather Badger",
   },
   plugins: [
     "gatsby-plugin-dts-css-modules",
