@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Router } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 

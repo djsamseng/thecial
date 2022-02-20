@@ -1,25 +1,94 @@
 import React from "react";
+import { Router } from "@reach/router";
 import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image"
 
 import LayoutComponent from "../../components/layout";
 
+type GiftsSearchComponentProps = {};
+type GiftsSearchComponentState = {
+  searchText: string;
+}
+
+const DATA = [
+  {
+    url: "",
+    title: "Golf Cheating Device",
+    tags: ["golf", "prank"],
+  },
+  {
+    url: "",
+    title: "Family Puzzle",
+    tags: ["family", "picture", "puzzle", "personalized"],
+  }
+];
+
+const TAG_TO_DATA = {};
+for (const item of DATA) {
+  for (const tag of item.tags) {
+    if (!TAG_TO_DATA[tag]) {
+      TAG_TO_DATA[tag] = []
+    }
+    TAG_TO_DATA[tag].push(item);
+  }
+}
+
+class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, GiftsSearchComponentState> {
+  constructor(props: GiftsSearchComponentProps) {
+    super(props);
+    this.state = {
+      searchText: "",
+    }
+  }
+
+  public render() {
+    let matches = DATA;
+    if (this.state.searchText) {
+      const words = this.state.searchText.split(" ");
+      if (words.length > 0) {
+        matches = [];
+        for (const word of words) {
+          for (const tag in TAG_TO_DATA) {
+            if (tag.startsWith(word) && tag !== word) {
+              words.push(tag);
+            }
+          }
+        }
+      }
+      for (const word of words) {
+        if (TAG_TO_DATA[word]) {
+          TAG_TO_DATA[word].forEach(item => {
+            matches.push(item);
+          });
+        }
+      }
+      // TODO: remove duplicates
+    }
+
+    return (
+      <div>
+        <input type="text" onChange={this.onSearchChange.bind(this)}></input>
+        <ul>
+          {
+            matches.map(item => {
+              return (
+                <li>{item.title}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
+    )
+  }
+
+  private onSearchChange(evt: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({
+      searchText: evt.target.value,
+    });
+  }
+}
+
 type GiftsIndexPageProps = {
-  data: {
-    allMdx: {
-      nodes: Array<{
-        id: string,
-        slug: string,
-        frontmatter: {
-          title: string;
-          date: string;
-          image_link: string;
-          image_alt: string;
-          link: string;
-        };
-      }>;
-    };
-  };
 };
 type GiftsIndexPageState = {};
 
@@ -31,38 +100,10 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
   public render() {
     return (
       <LayoutComponent pageTitle="Gifts">
-        {
-          this.props.data.allMdx.nodes.map(node => {
-            return (
-              <div>
-                <h2>
-                  <a target="_blank" href={node.frontmatter.title}>{node.frontmatter.title}</a>
-                </h2>
-                <StaticImage src="https://i.etsystatic.com/24300406/r/il/41cf8d/2494911473/il_1588xN.2494911473_k1r2.jpg" alt={node.frontmatter.image_alt} />
-              </div>
-            );
-          })
-        }
+        <GiftsSearchComponent />
       </LayoutComponent>
     )
   }
 }
-
-export const query = graphql`
-  query {
-    allMdx(filter: {fileAbsolutePath: {regex: "/(gifts)/"}}) {
-      nodes {
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          title,
-          image_alt,
-          link
-        },
-        id,
-        slug
-      }
-    }
-  }
-`
 
 export default GiftsIndexPage;
