@@ -1,78 +1,163 @@
 import React from "react";
-import { Router } from "@reach/router";
+import { Router, RouteComponentProps } from "@reach/router";
 import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image"
 
 import LayoutComponent from "../../components/layout";
 
-type GiftsSearchComponentProps = {};
+type GiftsSearchComponentProps = {
+  location: RouteComponentProps["location"];
+};
 type GiftsSearchComponentState = {
   searchText: string;
+  maxResults: number;
 }
 
-const DATA = [
-  {
-    url: "",
-    title: "Golf Cheating Device",
-    tags: ["golf", "prank"],
-  },
-  {
-    url: "",
-    title: "Family Puzzle",
-    tags: ["family", "picture", "puzzle", "personalized"],
-  }
-];
+type GiftResultItem = {
+  key: string;
+  url?: string;
+  title: string;
+  tags: Array<string>;
+  img?: string;
+  iframe?: string;
+  desc: string;
+}
+type GiftResult = {
+  queryMatches: Array<string>;
+  item: GiftResultItem;
+}
+function getData(): Array<GiftResultItem> {
+  const data = [
+    {
+      url: "",
+      title: "Golf Cheating Device",
+      tags: ["golf", "prank"],
+      description: "",
+    },
+    {
+      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B08PRTS8ZQ&asins=B08PRTS8ZQ&linkId=08d5f2060b90cdd4d801602f3876937d&show_border=true&link_opens_in_new_window=true",
 
-const TAG_TO_DATA = {};
-for (const item of DATA) {
-  for (const tag of item.tags) {
-    if (!TAG_TO_DATA[tag]) {
-      TAG_TO_DATA[tag] = []
+      url: "https://www.amazon.com/dp/B08PRTS8ZQ?_encoding=UTF8&aaxitk=725dc1b75a163389022bd2f25cede2a3&hsa_cr_id=6905224560001&pd_rd_plhdr=t&pd_rd_r=bdf49a6b-dd0a-4c02-a8b7-a1729f488941&pd_rd_w=VJVZ5&pd_rd_wg=JYawM&linkCode=li3&tag=gatherbadger-20&linkId=eb7aae2f15687d33213bee51e445cf2c&language=en_US&ref_=as_li_ss_il",
+      img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08PRTS8ZQ&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+      title: "Family Puzzle",
+      tags: ["family", "picture", "puzzle", "personalized"],
+      desc: "Personalize this with photos from a special vacation or wedding"
+    },
+    {
+      url: "https://www.amazon.com/gp/product/B07Q6XSVS9/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07Q6XSVS9&linkCode=as2&tag=gatherbadger-20&linkId=f780aece6a780f63aba7d88539cdd422",
+      img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07Q6XSVS9&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=gatherbadger-20",
+      title: "Personalized Hot Tub Sign",
+      tags: ["hot", "tub", "pool", "personalized"],
+      html: `<a target="_blank"  href=""><img border="0" src="" ></a>`,
+      desc: "Personalize this with the name of the street you live on or the person's nickname."
+    },
+    {
+      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B07SMB7NSW&asins=B07SMB7NSW&linkId=8eba85cbd36b7a48b6f1377b7a75bd01&show_border=true&link_opens_in_new_window=true",
+      title: "Personalized Golf Balls",
+      tags: ["golf", "personalized"],
+      html: `<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src=""></iframe>`,
+      desc: "Personalize this with the name of the book they wrote or their favorite bird for a birdie!"
+    },
+    {
+      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=1944247300&asins=1944247300&linkId=602066e3b93c400fb2c628419b5793f5&show_border=true&link_opens_in_new_window=true",
+      title: "Crossword Jigsaw Puzzle",
+      tags: ["jigsaw", "puzzle", "crossword"],
+      desc: "",
+    },
+  ];
+
+  return data.map((item, idx) => {
+    item.key = idx;
+    return item;
+  });
+}
+
+function getTagToData(data) {
+  const tagToData = {};
+  for (const item of data) {
+    for (const tag of item.tags) {
+      if (!tagToData[tag]) {
+        tagToData[tag] = []
+      }
+      tagToData[tag].push(item);
     }
-    TAG_TO_DATA[tag].push(item);
   }
+  return tagToData;
 }
+
+const GIFT_RESULTS = getData();
+const TAG_TO_GIFT_RESULT = getTagToData(GIFT_RESULTS);
+const ALL_GIFT_RESULTS: Array<GiftResult> = GIFT_RESULTS.map(item => {
+  return {
+    queryMatches: [],
+    item: item,
+  };
+});
 
 class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, GiftsSearchComponentState> {
   constructor(props: GiftsSearchComponentProps) {
     super(props);
     this.state = {
-      searchText: "",
+      searchText: props.location.state.searchText || "",
+      maxResults: 5,
     }
   }
 
-  public render() {
-    let matches = DATA;
-    if (this.state.searchText) {
-      const words = this.state.searchText.split(" ");
-      if (words.length > 0) {
-        matches = [];
-        for (const word of words) {
-          for (const tag in TAG_TO_DATA) {
-            if (tag.startsWith(word) && tag !== word) {
-              words.push(tag);
-            }
-          }
-        }
-      }
-      for (const word of words) {
-        if (TAG_TO_DATA[word]) {
-          TAG_TO_DATA[word].forEach(item => {
-            matches.push(item);
-          });
-        }
-      }
-      // TODO: remove duplicates
+  public componentDidMount(): void {
+    if (!window) {
+      return;
     }
+    window.addEventListener("scroll", this.loadMoreOnScroll.bind(this));
+  }
+
+  public componentWillUnmount(): void {
+    if (!window) {
+      return;
+    }
+    window.removeEventListener("scroll", this.loadMoreOnScroll.bind(this));
+  }
+
+
+  public render() {
+    const matches = this.getMatches(this.state.searchText);
 
     return (
-      <div>
-        <input type="text" onChange={this.onSearchChange.bind(this)}></input>
+      <div className="flex flex-col pt-5 pb-20 items-center">
+        <div className="flex flex-row">
+          <input className="bg-slate-100 dark:bg-slate-500" type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
+          <button onClick={this.onClearSearch.bind(this)}>Clear</button>
+        </div>
+
         <ul>
           {
-            matches.map(item => {
+            matches.map(giftResult => {
+              const item = giftResult.item;
+              let img = null;
+              let iframe = null;
+              if (item.iframe) {
+                iframe = (
+                  <iframe className="ml-5 mt-1 w-[120px] h-[240px]" scrolling="no" src={item.iframe}/>
+                )
+              }
+
+              if (item.img) {
+                img = (
+                  <img className="ml-5 mt-1" src={item.img}></img>
+                )
+              }
+              let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""
               return (
-                <li>{item.title}</li>
+                <li className="mt-5" key={item.key}>
+                  <a target="_blank" href={item.url}>
+                    <p className="text-2xl">{item.title}</p>
+                    <div className="flex flex-row items-baseline">
+                      {img}
+                      {iframe}
+                    </div>
+                    <p className="mt-1">{item.desc}</p>
+                  </a>
+                  <p>{queryMatches}</p>
+                </li>
               )
             })
           }
@@ -81,26 +166,81 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     )
   }
 
+  private getMatches(
+    words?: string,
+  ): Array<GiftResult> {
+    let matches = ALL_GIFT_RESULTS;
+    if (words) {
+      const matchesObj:Record<string, GiftResult> = {};
+      const wordsAry = words.split(" ");
+      if (wordsAry.length > 0) {
+        console.log(wordsAry);
+        matches = [];
+        for (const word of wordsAry) {
+          for (const tag in TAG_TO_GIFT_RESULT) {
+            if (word.length > 0 && tag.startsWith(word) && tag !== word) {
+              wordsAry.push(tag);
+            }
+          }
+        }
+        for (const word of wordsAry) {
+          if (TAG_TO_GIFT_RESULT[word]) {
+            TAG_TO_GIFT_RESULT[word].forEach(item => {
+              if (!matchesObj[item.key]) {
+                matchesObj[item.key] = {
+                  queryMatches: [],
+                  item: item,
+                }
+              }
+              matchesObj[item.key].queryMatches.push(word);
+            });
+          }
+        }
+        matches = Object.values(matchesObj);
+      }
+    }
+    return matches.slice(0, this.state.maxResults);
+  }
+
+  private loadMoreOnScroll() {
+    if (!window || !document || !document.documentElement) {
+      return;
+    }
+    if (window.innerHeight + document.documentElement.scrollTop + 20 >= document.scrollingElement.scrollHeight) {
+      console.log("Should load more elements");
+      this.setState({
+        maxResults: this.state.maxResults + 5,
+      })
+    }
+  }
+
   private onSearchChange(evt: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       searchText: evt.target.value,
     });
   }
+
+  private onClearSearch(evt: React.MouseEvent<HTMLButtonElement>){
+    evt.preventDefault();
+    this.setState({
+      searchText: "",
+    });
+  }
 }
 
-type GiftsIndexPageProps = {
+interface GiftsIndexPageProps extends RouteComponentProps {
 };
 type GiftsIndexPageState = {};
 
 class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageState> {
   constructor(props: GiftsIndexPageProps) {
-    super(props)
+    super(props);
   }
 
   public render() {
     return (
       <LayoutComponent pageTitle="Gifts">
-        <GiftsSearchComponent />
+        <GiftsSearchComponent location={this.props.location} />
       </LayoutComponent>
     )
   }
