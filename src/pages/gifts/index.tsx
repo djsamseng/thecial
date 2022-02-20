@@ -29,7 +29,8 @@ type GiftResult = {
 function getData(): Array<GiftResultItem> {
   const data = [
     {
-      url: "",
+      url: "https://www.etsy.com/listing/828799390/",
+      img: "https://i.etsystatic.com/24300406/r/il/41cf8d/2494911473/il_794xN.2494911473_k1r2.jpg",
       title: "Golf Cheating Device",
       tags: ["golf", "prank"],
       description: "",
@@ -98,7 +99,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
   constructor(props: GiftsSearchComponentProps) {
     super(props);
     this.state = {
-      searchText: props.location.state.searchText || "",
+      searchText: props.location.state?.searchText || "",
       maxResults: 5,
     }
   }
@@ -124,7 +125,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     return (
       <div className="flex flex-col pt-5 pb-20 items-center">
         <div className="flex flex-row">
-          <input className="bg-slate-100 dark:bg-slate-500" type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
+          <input className="border-slate-500 border-2 rounded mr-5" type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
           <button onClick={this.onClearSearch.bind(this)}>Clear</button>
         </div>
 
@@ -142,7 +143,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
 
               if (item.img) {
                 img = (
-                  <img className="ml-5 mt-1" src={item.img}></img>
+                  <img className="ml-5 mt-1 max-w-xs" src={item.img}></img>
                 )
               }
               let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""

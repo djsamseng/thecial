@@ -21,15 +21,27 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
   render() {
     return (
       <LayoutComponent pageTitle="Home Page">
-        <h1>Gather Badger</h1>
-        <p>Find that the gift for the special someone</p>
-        <br/>
-        <p>Grandpa + Favorite bird + Golf = Grandpa's Favorite Birdie</p>
-        <StaticImage alt="Grandpa's favorite birdie" src="../images/grandpas_favorite_birdie.png"/>
-        <form onSubmit={this.onSubmit.bind(this)}>
-          <input type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
-          <button type="submit">Search</button>
-        </form>
+        <div className="flex flex-col items-center">
+          <h1 className="text-3xl">Gather Badger</h1>
+          <p>Helping You Find That Perfect Gift</p>
+
+          <div className="mt-5">
+            <form onSubmit={this.onSubmit.bind(this)}>
+              <input className="border-slate-500 border-2 rounded" type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
+              <button className="ml-5" type="submit">Search</button>
+            </form>
+          </div>
+
+          <div className="mt-20 flex flex-col items-center">
+            <p className="text-xl">Grandpa + Favorite bird + Golf = Grandpa's Favorite Birdie</p>
+
+            <StaticImage className="mt-2" alt="Grandpa's favorite birdie" src="../images/grandpas_favorite_birdie.png"/>
+            <p className="mt-2">Show just how much you know him. Personalize a golfball with his favorite Birdie</p>
+          </div>
+
+
+        </div>
+
       </LayoutComponent>
     );
   }

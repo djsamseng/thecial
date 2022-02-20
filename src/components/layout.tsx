@@ -96,6 +96,26 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
   }
 }
 
+type FooterComponentProps = {};
+type FooterComponentState = {};
+class FooterComponent extends React.Component<FooterComponentProps, FooterComponentState> {
+  constructor(props: FooterComponentProps) {
+    super(props);
+  }
+
+  public render() {
+    return (
+      <div className="pt-5 pb-5 bg-slate-100 dark:bg-slate-700">
+        <div className="flex flex-col items-center">
+          <p className="text-2xl">Thank You!</p>
+          <p>This website uses affiliate links. Everytime you click a link and buy that product a small percentage goes to charity and towards helping support this website</p>
+        </div>
+      </div>
+
+    )
+  }
+}
+
 class LayoutComponent extends React.Component<LayoutComponentProps, LayoutComponentState> {
   constructor(props: LayoutComponentProps) {
     super(props);
@@ -104,15 +124,14 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
 
   public render() {
     return (
-      <div className="min-h-screen w-full font-roboto dark:bg-gray-900 dark:text-slate-200">
+      <div className="flex flex-col min-h-screen w-full justify-between font-roboto dark:bg-gray-900 dark:text-slate-200">
         <title>{this.props.pageTitle}</title>
         <HeaderComponent />
-        <main className="">
-          <h1 className="">
-            {this.props.pageTitle}
-          </h1>
+        <main className="mb-auto">
           {this.props.children}
         </main>
+        <FooterComponent />
+
       </div>
     )
   }
