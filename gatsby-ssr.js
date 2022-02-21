@@ -8,36 +8,31 @@ exports.onRenderBody = function({ setPreBodyComponents }) {
         __html: `
 void function() {
   window.__onThemeChange = function() {}
-  var preferredTheme;
-  var channel = new BroadcastChannel('thecialTheme');
-  channel.onmessage = function (evt) {
-    console.log("Received thecialTheme message:", evt);
-  }
+  var preferredTheme
   try {
-    preferredTheme = localStorage.getItem('theme');
+    preferredTheme = localStorage.getItem('theme')
   } catch (err) { }
   function setTheme(newTheme) {
     if (preferredTheme && document.body.classList.contains(preferredTheme)) {
-      document.body.classList.replace(preferredTheme, newTheme);
+      document.body.classList.replace(preferredTheme, newTheme)
     } else {
-      document.body.classList.add(newTheme);
+      document.body.classList.add(newTheme)
     }
-    window.__theme = newTheme;
-    preferredTheme = newTheme;
-    window.__onThemeChange(newTheme);
+    window.__theme = newTheme
+    preferredTheme = newTheme
+    window.__onThemeChange(newTheme)
   }
   window.__setPreferredTheme = function(newTheme) {
-    setTheme(newTheme);
+    setTheme(newTheme)
     try {
-      localStorage.setItem('theme', newTheme);
-      channel.postMessage(newTheme);
+      localStorage.setItem('theme', newTheme)
     } catch (err) {}
   }
-  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
   darkQuery.addListener(function(e) {
-    window.__setPreferredTheme(e.matches ? 'dark' : 'light');
+    window.__setPreferredTheme(e.matches ? 'dark' : 'light')
   })
-  setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+  setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
 }()
     `,
       },
