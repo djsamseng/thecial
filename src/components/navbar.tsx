@@ -23,7 +23,7 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
       )
     });
     return (
-      <nav className="" aria-label="Desktop Navigation">
+      <nav className="hidden md:visible flex-1 md:flex flex-row items-center" aria-label="Desktop Navigation">
         <ul className="md:flex px-4 mx-auto font-semibold font-heading space-x-12">
           {liItems}
         </ul>

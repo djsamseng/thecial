@@ -25,9 +25,9 @@ const TitleComponent = () => {
   return (
     <div className="font-bold font-heading text-3xl flex-1">
       <p className="sr-only">{data.site.siteMetadata.title}</p>
-      <Link to="/">
-        <StaticImage className="mt-[-30px] mb-[-40px] mr-5" height={100} alt="Gather Badger" src="../images/badger-logo.svg"/>
-        {data.site.siteMetadata.title}
+      <Link to="/" className="flex flex-row items-center">
+        <StaticImage className="mr-5" height={60} alt="Gather Badger" src="../images/badger-logo.svg"/>
+        <div className="">{data.site.siteMetadata.title}</div>
       </Link>
     </div>
   );
@@ -65,9 +65,11 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
       (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>);
     return (
       <div className="flex-1 mr-6 flex flex-col items-end">
-        <button className="" onClick={this.onToggleDarkTheme.bind(this)}>
-          {icon}
-        </button>
+        <div className="flex-1 flex flex-row items-center">
+          <button className="" onClick={this.onToggleDarkTheme.bind(this)}>
+            {icon}
+          </button>
+        </div>
       </div>
     );
   }
@@ -87,12 +89,14 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
 
   public render() {
     return (
-      <header className="bg-gray-100 border-b dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
-        <section className="px-2 py-5 mx-5 flex flex-col">
+      <header className="border-b bg-stone-300 dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
+        <section className="mx-5 flex flex-col">
           <div className="flex flex-row justify-between">
-              <TitleComponent />
-              <NavBar />
-              <ControlsPanel />
+              <div className="flex flex-1 flex-row py-1 justify-between">
+                <TitleComponent />
+                <NavBar />
+                <ControlsPanel />
+              </div>
           </div>
         </section>
       </header>
@@ -110,7 +114,7 @@ class FooterComponent extends React.Component<FooterComponentProps, FooterCompon
 
   public render() {
     return (
-      <div className="pt-5 pb-5 bg-slate-100 dark:bg-slate-700">
+      <div className="pt-5 pb-5 px-3 bg-stone-300 dark:bg-slate-700">
         <div className="flex flex-col items-center">
           <p className="text-2xl">Thank You!</p>
           <p>This website uses affiliate links. Everytime you click a link and buy that product a small percentage goes to charity and towards helping support this website</p>
@@ -129,10 +133,10 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
 
   public render() {
     return (
-      <div className="flex flex-col min-h-screen w-full justify-between font-roboto dark:bg-gray-900 dark:text-slate-200">
+      <div className="flex flex-col min-h-screen w-full justify-between font-roboto bg-stone-200 dark:bg-gray-900 dark:text-slate-200">
         <title>{this.props.pageTitle}</title>
         <HeaderComponent />
-        <main className="mb-auto">
+        <main className="mb-auto min-h-[600px] px-3">
           {this.props.children}
         </main>
         <FooterComponent />
