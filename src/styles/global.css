@@ -519,6 +519,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: auto;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
 .mr-6 {
   margin-right: 1.5rem;
 }
@@ -549,6 +554,30 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-\[-20px\] {
+  margin-top: -20px;
+}
+
+.mb-\[-20px\] {
+  margin-bottom: -20px;
+}
+
+.mb-\[-30px\] {
+  margin-bottom: -30px;
+}
+
+.mt-\[-30px\] {
+  margin-top: -30px;
+}
+
+.mb-\[-40px\] {
+  margin-bottom: -40px;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .flex {
@@ -591,6 +620,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 20rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -609,6 +642,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-direction: column;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -617,8 +654,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: baseline;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-items-end {
+  justify-items: end;
 }
 
 .space-x-12 > :not([hidden]) ~ :not([hidden]) {
@@ -698,6 +743,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1.25rem;
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
 }
@@ -708,6 +758,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-20 {
   padding-bottom: 5rem;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+.align-text-bottom {
+  vertical-align: text-bottom;
 }
 
 .text-3xl {
