@@ -2,25 +2,32 @@ import React from "react";
 import { Link } from "gatsby";
 
 type SearchBarProps = {};
-type SearchBarState = {};
+type SearchBarState = {
+  searchText: string;
+};
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   constructor(props: SearchBarProps) {
     super(props);
+    this.state = {
+      searchText: "",
+    }
   }
   public render() {
     return (
-      <div className="hidden xl:block">
-        <form className="h-14 flex items-center">
-          <input className="appearance-none text-md py-1 px-2 focus:outline-none border-2 focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-900 text-purple-900 dark:text-gray-100 placeholder-purple-300 dark:placeholder-gray-600 font-semibold rounded-l"
-            type="search">
-          </input>
-          <button className="bg-blue-500 hover:bg-blue-800 px-5 py-1 text-lg font-bold hover:shadow-2xl cursor-pointer transition duration-250 ease-in-out rounded-r"
-            type="submit" value="Search" color="blue">
-            Search
-          </button>
+      <div className="hidden flex-1 sm:flex flex-row items-center shrink-0 min-w-fit">
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <input className="border-slate-500 border-2 rounded" type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
+          <button className="ml-5" type="submit">Search</button>
         </form>
       </div>
     );
+  }
+
+  private onSearchChange(evt) {
+
+  }
+  private onSubmit(evt) {
+
   }
 }
 

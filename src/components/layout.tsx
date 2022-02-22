@@ -23,11 +23,11 @@ const TitleComponent = () => {
   `);
   // CC0 license https://www.svgrepo.com/svg/252816/badger
   return (
-    <div className="font-bold font-heading text-3xl flex-1">
+    <div className="font-bold font-heading text-xl xs:text-2xl sm:text-3xl flex-1 shrink-0 min-w-fit mr-5">
       <p className="sr-only">{data.site.siteMetadata.title}</p>
-      <Link to="/" className="flex flex-row items-center">
+      <Link to="/" className="flex flex-row flex-nowrap items-center">
         <StaticImage className="mr-5" height={60} alt="Gather Badger" src="../images/badger-logo.svg"/>
-        <div className="">{data.site.siteMetadata.title}</div>
+        <div className="whitespace-nowrap">{data.site.siteMetadata.title}</div>
       </Link>
     </div>
   );
@@ -64,9 +64,9 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
       :
       (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>);
     return (
-      <div className="flex-1 mr-6 flex flex-col items-end">
+      <div className="flex-1 shrink flex flex-col items-end">
         <div className="flex-1 flex flex-row items-center">
-          <button className="" onClick={this.onToggleDarkTheme.bind(this)}>
+          <button className="px-4" onClick={this.onToggleDarkTheme.bind(this)}>
             {icon}
           </button>
         </div>
@@ -90,14 +90,17 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
   public render() {
     return (
       <header className="border-b bg-stone-300 dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
-        <section className="mx-5 flex flex-col">
+        <section className="mx-2 xs:mx-5 flex flex-col">
           <div className="flex flex-row justify-between">
               <div className="flex flex-1 flex-row py-1 justify-between">
                 <TitleComponent />
-                <NavBar />
+                <SearchBar />
                 <ControlsPanel />
               </div>
           </div>
+        </section>
+        <section className="bg-stone-300 dark:bg-slate-800 dark:border-gray-700 border-t-2 md:border-y-2 border-stone-400">
+          <NavBar />
         </section>
       </header>
 
