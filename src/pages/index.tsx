@@ -1,12 +1,15 @@
 
-import React from "react";
-import { Router } from "@reach/router";
+import React, { createContext } from "react";
+import { Router, RouteComponentProps } from "@reach/router";
 import { useStaticQuery, graphql, navigate } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
 import LayoutComponent from "../components/layout";
 
-type IndexPageProps = {};
+
+interface IndexPageProps extends RouteComponentProps {
+
+};
 type IndexPageState = {
   searchText: string;
 };
@@ -19,8 +22,16 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
   }
 
   render() {
+    const SearchEntry = createContext({
+      searchText: this.state.searchText,
+      setSearchText: (val) => {
+        this.setState({
+          searchText: val,
+        });
+      }
+    });
     return (
-      <LayoutComponent pageTitle="Home Page">
+      <LayoutComponent pageTitle="Home Page" searchEntryContext={SearchEntry}>
         <div className="flex flex-col items-center">
           <h1 className="text-3xl">Gather Badger</h1>
           <p>Helping You Find That Perfect Gift</p>

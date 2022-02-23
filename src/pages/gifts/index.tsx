@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { Router, RouteComponentProps } from "@reach/router";
 import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image"
@@ -6,10 +6,9 @@ import { StaticImage } from "gatsby-plugin-image"
 import LayoutComponent from "../../components/layout";
 
 type GiftsSearchComponentProps = {
-  location: RouteComponentProps["location"];
+  searchEntryContext: React.Context<any>;
 };
 type GiftsSearchComponentState = {
-  searchText: string;
   maxResults: number;
 }
 
@@ -99,7 +98,6 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
   constructor(props: GiftsSearchComponentProps) {
     super(props);
     this.state = {
-      searchText: props.location.state?.searchText || "",
       maxResults: 5,
     }
   }
@@ -120,16 +118,12 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
 
 
   public render() {
-    const matches = this.getMatches(this.state.searchText);
+    const { searchText, setSearchText } = useContext(this.props.searchEntryContext);
+    const matches = this.getMatches(searchText);
 
     return (
       <div className="flex flex-col pt-5 pb-20 items-center">
-        <div className="flex flex-row">
-          <input className="border-slate-500 border-2 rounded mr-5" type="search" onChange={this.onSearchChange.bind(this)} value={this.state.searchText}></input>
-          <button onClick={this.onClearSearch.bind(this)}>Clear</button>
-        </div>
-
-        <ul>
+        <ul className="">
           {
             matches.map(giftResult => {
               const item = giftResult.item;
@@ -153,7 +147,6 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
                     <p className="text-2xl">{item.title}</p>
                     <div className="flex flex-row items-baseline">
                       {img}
-                      {iframe}
                     </div>
                     <p className="mt-1">{item.desc}</p>
                   </a>
@@ -215,33 +208,34 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     }
   }
 
-  private onSearchChange(evt: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      searchText: evt.target.value,
-    });
-  }
-
-  private onClearSearch(evt: React.MouseEvent<HTMLButtonElement>){
-    evt.preventDefault();
-    this.setState({
-      searchText: "",
-    });
-  }
 }
 
 interface GiftsIndexPageProps extends RouteComponentProps {
 };
-type GiftsIndexPageState = {};
+type GiftsIndexPageState = {
+  searchText: string;
+};
 
 class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageState> {
   constructor(props: GiftsIndexPageProps) {
     super(props);
+    this.state = {
+      searchText: "",
+    }
   }
 
   public render() {
+    const SearchEntry = createContext({
+      searchText: this.state.searchText,
+      setSearchText: (val) => {
+        this.setState({
+          searchText: val,
+        });
+      }
+    });
     return (
-      <LayoutComponent pageTitle="Gifts">
-        <GiftsSearchComponent location={this.props.location} />
+      <LayoutComponent pageTitle="Gifts" searchEntryContext={SearchEntry}>
+        <GiftsSearchComponent searchEntryContext={SearchEntry} />
       </LayoutComponent>
     )
   }

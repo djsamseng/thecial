@@ -8,6 +8,7 @@ import SearchBar from "./searchbar";
 type LayoutComponentProps = {
   pageTitle: string;
   children: React.ReactNode;
+  searchEntryContext: React.Context<any>;
 };
 type LayoutComponentState = {};
 
@@ -80,7 +81,9 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
   }
 }
 
-type HeaderComponentProps = {};
+type HeaderComponentProps = {
+  searchEntryContext: React.Context<any>;
+};
 type HeaderComponentState = {};
 class HeaderComponent extends React.Component<HeaderComponentProps, HeaderComponentState> {
   constructor(props: HeaderComponentProps) {
@@ -94,10 +97,16 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
           <div className="flex flex-row justify-between">
               <div className="flex flex-1 flex-row py-1 justify-between">
                 <TitleComponent />
-                <SearchBar />
+                <div className="hidden flex-1 sm:flex flex-row items-center shrink-0 min-w-fit">
+                  <SearchBar searchEntryContext={this.props.searchEntryContext} />
+                </div>
                 <ControlsPanel />
               </div>
           </div>
+        </section>
+
+        <section className="flex flex-1 flex-row py-1 justify-center items-center w-full sm:hidden">
+          <SearchBar searchEntryContext={this.props.searchEntryContext}/>
         </section>
         <section className="bg-stone-300 dark:bg-slate-800 dark:border-gray-700 border-t-2 md:border-y-2 border-stone-400">
           <NavBar />
@@ -138,7 +147,7 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
     return (
       <div className="flex flex-col min-h-screen w-full justify-between font-roboto bg-stone-200 dark:bg-gray-900 dark:text-slate-200">
         <title>{this.props.pageTitle}</title>
-        <HeaderComponent />
+        <HeaderComponent searchEntryContext={this.props.searchEntryContext} />
         <main className="mb-auto min-h-[600px] px-3">
           {this.props.children}
         </main>
