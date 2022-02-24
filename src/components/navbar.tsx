@@ -23,8 +23,8 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
       )
     });
     return (
-      <nav className="hidden xs:flex shrink" aria-label="Desktop Navigation">
-        <ul className="xs:flex px-4 font-semibold font-heading space-x-12">
+      <nav className="flex flex-row justify-center shrink" aria-label="Desktop Navigation">
+        <ul className="flex px-4 font-semibold font-heading space-x-12">
           {liItems}
         </ul>
       </nav>

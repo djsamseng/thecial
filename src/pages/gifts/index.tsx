@@ -1,13 +1,12 @@
 import React, { createContext, useContext } from "react";
 import { Router, RouteComponentProps } from "@reach/router";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image"
 
+import SearchBar, { SearchBarContext } from "../../components/searchbar";
 import LayoutComponent from "../../components/layout";
 
-type GiftsSearchComponentProps = {
-  searchEntryContext: React.Context<any>;
-};
+type GiftsSearchComponentProps = {};
 type GiftsSearchComponentState = {
   maxResults: number;
 }
@@ -118,7 +117,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
 
 
   public render() {
-    const { searchText, setSearchText } = useContext(this.props.searchEntryContext);
+    const { searchText, setSearchText, submitSearch } = useContext(SearchBarContext);
     const matches = this.getMatches(searchText);
 
     return (
@@ -168,7 +167,6 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
       const matchesObj:Record<string, GiftResult> = {};
       const wordsAry = words.split(" ");
       if (wordsAry.length > 0) {
-        console.log(wordsAry);
         matches = [];
         for (const word of wordsAry) {
           for (const tag in TAG_TO_GIFT_RESULT) {
@@ -219,24 +217,35 @@ type GiftsIndexPageState = {
 class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageState> {
   constructor(props: GiftsIndexPageProps) {
     super(props);
+    console.log(props);
     this.state = {
-      searchText: "",
+      searchText: this.props.location.state.searchText || "",
     }
   }
 
   public render() {
-    const SearchEntry = createContext({
+    const searchContext = {
       searchText: this.state.searchText,
       setSearchText: (val) => {
         this.setState({
           searchText: val,
         });
-      }
-    });
+      },
+      submitSearch: () => {
+        navigate("/gifts", {
+          state: {
+            searchText: this.state.searchText,
+          }
+        });
+      },
+    };
     return (
-      <LayoutComponent pageTitle="Gifts" searchEntryContext={SearchEntry}>
-        <GiftsSearchComponent searchEntryContext={SearchEntry} />
-      </LayoutComponent>
+      <SearchBarContext.Provider value={searchContext}>
+        <LayoutComponent pageTitle="Gifts">
+          <GiftsSearchComponent />
+        </LayoutComponent>
+      </SearchBarContext.Provider>
+
     )
   }
 }
