@@ -29,7 +29,10 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     let img = null;
     let iframe = null;
 
-    if (item.img) {
+    if (this.props.children) {
+      img = this.props.children;
+    }
+    else if (item.img) {
       img = (
         <img className="ml-5 mt-1 max-w-xs" src={item.img}></img>
       )
@@ -50,7 +53,15 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
           </div>
           <p className="mt-1">{item.desc}</p>
         </a>
-        <p>{queryMatches}</p>
+        <div className="mt-2 overflow-hidden">
+          {
+            giftResult.queryMatches.map(queryMatch => {
+              return (
+                <span className="mx-2 border-[1px] px-2 border-stone-200 rounded">{queryMatch}</span>
+              )
+            })
+          }
+        </div>
       </li>
     );
   }

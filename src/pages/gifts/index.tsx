@@ -29,7 +29,7 @@ function getData(): Array<GiftResultItem> {
       url: "https://www.amazon.com/dp/B08PRTS8ZQ?_encoding=UTF8&aaxitk=725dc1b75a163389022bd2f25cede2a3&hsa_cr_id=6905224560001&pd_rd_plhdr=t&pd_rd_r=bdf49a6b-dd0a-4c02-a8b7-a1729f488941&pd_rd_w=VJVZ5&pd_rd_wg=JYawM&linkCode=li3&tag=gatherbadger-20&linkId=eb7aae2f15687d33213bee51e445cf2c&language=en_US&ref_=as_li_ss_il",
       img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08PRTS8ZQ&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
       title: "Family Puzzle",
-      tags: ["family", "picture", "puzzle", "personalized"],
+      tags: ["family", "picture", "puzzle", "personalized", ],
       desc: "Personalize this with photos from a special vacation or wedding"
     },
     {
@@ -53,6 +53,14 @@ function getData(): Array<GiftResultItem> {
       tags: ["jigsaw", "puzzle", "crossword"],
       desc: "",
     },
+    {
+      url: "https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li2&tag=gatherbadger-20&linkId=6bc507a87625441db09e77e4e3333dd1&language=en_US&ref_=as_li_ss_il",
+      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B08BFJH2Y1&asins=B08BFJH2Y1&linkId=ac32dbce2bf5749b013b112b1428e19c&show_border=true&link_opens_in_new_window=true",
+      img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+      title: "Donald Trump Candle",
+      tags: ["politics", "donald", "trump", "funny", "candle"],
+      desc: "Net Weight: Huge",
+    }
   ];
 
   return data.map((item, idx) => {
@@ -108,10 +116,10 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
 
   public render() {
     const { searchText, setSearchText, submitSearch } = useContext(SearchBarContext);
-    const matches = this.getMatches(searchText);
+    const matches = this.getMatches(searchText.toLowerCase());
 
     return (
-      <div className="flex flex-col pt-5 pb-20 items-center">
+      <div className="pt-5 pb-20 items-center">
         <ul className="">
           {
             matches.map(giftResult => {

@@ -23,18 +23,22 @@ module.exports = {
     plugin(function({addBase, addComponents, addUtilities, theme}) {
       const numFadingElements = 4;
       const utilities = {};
-      function decimalToPercentString(i) {
-        return Math.floor(100 * i / (numFadingElements + 1)).toString() + "%";
+      function decimalToPercentString(i, offset=0) {
+        return Math.floor(
+          (100 * i / numFadingElements) + offset
+        ).toString() + "%";
       }
       for (let i = 0; i < numFadingElements; i++) {
-        const prevEnd = decimalToPercentString(i);
-        const begin = decimalToPercentString(i+1);
-        const end = decimalToPercentString(i+2);
+        const beginHidden = decimalToPercentString(i);
+        const beginShow = decimalToPercentString(i, offset=5);
+        const endShow = decimalToPercentString(i+1, offset=-5);
+        const endHidden = decimalToPercentString(i+1);
         utilities[`@keyframes fade-in-out-${i}`] = {
           "0%": { opacity: 0 },
-          [prevEnd]: {opacity: 0},
-          [begin]: { opacity: 1 },
-          [end]: { opacity: 0 },
+          [beginHidden]: {opacity: 0},
+          [beginShow]: { opacity: 1 },
+          [endShow]: {opacity: 1},
+          [endHidden]: { opacity: 0 },
           "100%": { opacity: 0 },
         };
       }

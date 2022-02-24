@@ -20,8 +20,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         <SearchBarContext.Consumer>
           {({ searchText, setSearchText, submitSearch }) => (
             <form className="flex-1 flex flex-row text-slate-900" onSubmit={this.onSearchSubmit.bind(this, submitSearch)}>
-              <input className="flex-1 border-slate-500  border-2 rounded rounded-r-none border-r-0" type="search" onChange={(evt) => setSearchText(evt.target.value)} value={searchText} ></input>
-              <button className="bg-amber-200 border-slate-500 border-2 w-12 h-10 rounded-r-lg border-l-0 flex flex-col items-center justify-center" type="submit">
+              <input className="flex-1 border-slate-500 border-2 rounded-lg " type="search" onChange={(evt) => setSearchText(evt.target.value)} value={searchText} ></input>
+              <button className="bg-amber-200 border-slate-500 border-2 w-12 h-10 rounded-r-lg border-l-0 flex flex-col items-center justify-center ml-[-20px]" type="submit">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                           xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

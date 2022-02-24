@@ -51,7 +51,7 @@ class BestGiftAnimationComponent extends React.Component<BestGiftAnimationCompon
 
   public render() {
     return (
-      <div className="my-5 w-full h-10">
+      <div className="my-5 w-full flex flex-col items-start sm:items-center pt-20 h-10">
         <ul >
           {
             QUOTES_WITH_KEYS.map((obj, idx) => {
@@ -62,9 +62,7 @@ class BestGiftAnimationComponent extends React.Component<BestGiftAnimationCompon
                       <p>{obj.quote}</p>
                       <p>- {obj.author}</p>
                     </div>
-
                   </div>
-
                 </li>
               );
             })
