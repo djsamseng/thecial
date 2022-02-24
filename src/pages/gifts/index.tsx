@@ -183,9 +183,12 @@ type GiftsIndexPageState = {
 class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageState> {
   constructor(props: GiftsIndexPageProps) {
     super(props);
-    console.log(props);
+    let searchText = "";
+    if (this.props.location.state && (this.props.location.state as any).searchText) {
+      searchText = (this.props.location.state as any).searchText;
+    }
     this.state = {
-      searchText: this.props.location.state.searchText || "",
+      searchText,
     }
   }
 
