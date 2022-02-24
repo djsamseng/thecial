@@ -27,10 +27,10 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
           </div>
         </section>
 
-        <section className="flex flex-1 flex-row py-1 justify-center items-center w-full sm:hidden">
+        <section className="flex sm:hidden flex-1 flex-row py-1 justify-center items-center w-full ">
           <SearchBar />
         </section>
-        <section className="bg-stone-300 dark:bg-slate-800 dark:border-gray-700 border-t-2 md:border-y-2 border-stone-400">
+        <section className="">
           <NavBar />
         </section>
       </header>

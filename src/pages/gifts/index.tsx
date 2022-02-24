@@ -6,24 +6,14 @@ import { StaticImage } from "gatsby-plugin-image"
 import SearchBar, { SearchBarContext } from "../../components/searchbar";
 import LayoutComponent from "../../components/layout";
 
+import GiftItemComponent, { GiftResultItem, GiftResult } from "../../components/gift-item";
+
 type GiftsSearchComponentProps = {};
 type GiftsSearchComponentState = {
   maxResults: number;
 }
 
-type GiftResultItem = {
-  key: string;
-  url?: string;
-  title: string;
-  tags: Array<string>;
-  img?: string;
-  iframe?: string;
-  desc: string;
-}
-type GiftResult = {
-  queryMatches: Array<string>;
-  item: GiftResultItem;
-}
+
 function getData(): Array<GiftResultItem> {
   const data = [
     {
@@ -125,33 +115,9 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
         <ul className="">
           {
             matches.map(giftResult => {
-              const item = giftResult.item;
-              let img = null;
-              let iframe = null;
-              if (item.iframe) {
-                iframe = (
-                  <iframe className="ml-5 mt-1 w-[120px] h-[240px]" scrolling="no" src={item.iframe}/>
-                )
-              }
-
-              if (item.img) {
-                img = (
-                  <img className="ml-5 mt-1 max-w-xs" src={item.img}></img>
-                )
-              }
-              let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""
               return (
-                <li className="mt-5" key={item.key}>
-                  <a target="_blank" href={item.url}>
-                    <p className="text-2xl">{item.title}</p>
-                    <div className="flex flex-row items-baseline">
-                      {img}
-                    </div>
-                    <p className="mt-1">{item.desc}</p>
-                  </a>
-                  <p>{queryMatches}</p>
-                </li>
-              )
+                <GiftItemComponent giftResult={giftResult} />
+              );
             })
           }
         </ul>

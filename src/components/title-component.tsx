@@ -23,7 +23,6 @@ const TitleComponent = () => {
       </Link>
     </div>
   );
-  // <header className="text-3xl font-bold font-heading">{data.site.siteMetadata.title}</header>
 }
 
 export default TitleComponent;

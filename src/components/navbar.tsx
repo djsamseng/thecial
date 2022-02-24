@@ -16,14 +16,14 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
     ].map(item => {
       return (
         <li>
-          <Link to={item.href} className="hover:text-gray-200">
+          <Link to={item.href} className="hover:text-gray-400">
             {item.text}
           </Link>
         </li>
       )
     });
     return (
-      <nav className="flex flex-row justify-center shrink" aria-label="Desktop Navigation">
+      <nav className="flex flex-row justify-center shrink sm:bg-stone-200 sm:dark:bg-slate-700 py-1 pb-1" aria-label="Desktop Navigation">
         <ul className="flex px-4 font-semibold font-heading space-x-12">
           {liItems}
         </ul>

@@ -6,6 +6,7 @@ import { StaticImage } from "gatsby-plugin-image";
 
 import LayoutComponent from "../components/layout";
 import { SearchBarContext } from "../components/searchbar";
+import BestGiftAnimationComponent from "../components/best-gift-animation";
 
 
 
@@ -46,6 +47,8 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
           <div className="flex flex-col items-center">
             <h1 className="text-3xl">Gather Badger</h1>
             <p>Helping You Find That Perfect Gift</p>
+
+            <BestGiftAnimationComponent />
 
 
             <div className="mt-20 flex flex-col items-center">

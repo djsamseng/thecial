@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .animation-delay-5 {
+    animation-delay: 5s !important;
+  }
+}
