@@ -2,6 +2,7 @@ import React from "react";
 
 import HeaderComponent from "./header-component";
 import FooterComponent from "./footer-component";
+import SvgIconBackground from "./svg-icon-background";
 
 type LayoutComponentProps = {
   pageTitle: string;
@@ -18,14 +19,14 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
 
   public render() {
     return (
-      <div className="flex flex-col min-h-screen w-full justify-between font-roboto bg-stone-50 dark:bg-gray-900 dark:text-slate-200">
+      <div className="relative bg-transparent flex flex-col min-h-screen w-full justify-between font-roboto dark:text-slate-200">
         <title>{this.props.pageTitle}</title>
         <HeaderComponent />
-        <main className="mb-auto min-h-[600px] px-3">
+        <main className="mb-auto min-h-[600px]">
           {this.props.children}
         </main>
         <FooterComponent />
-
+        <SvgIconBackground />
       </div>
     )
   }

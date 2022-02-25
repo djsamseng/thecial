@@ -13,11 +13,14 @@ class GuidePage extends React.Component<GuidePageProps, GuidePageState> {
   public render() {
     return (
       <LayoutComponent pageTitle="Guide">
-        <h2>Step 1: What is unique to them?</h2>
-        <ul>
-          <li>Their name</li>
-          <li>A book they wrote</li>
-        </ul>
+        <div className="px-3">
+          <h2>Step 1: What is unique to them?</h2>
+          <ul>
+            <li>Their name</li>
+            <li>A book they wrote</li>
+          </ul>
+        </div>
+
       </LayoutComponent>
     )
   }

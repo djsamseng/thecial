@@ -74,7 +74,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     const matches = this.getMatches(searchText.toLowerCase());
 
     return (
-      <div className="pt-5 pb-20 items-center">
+      <div className="pt-5 pb-20 px-3 items-center">
         <ul className="">
           {
             matches.map(giftResult => {

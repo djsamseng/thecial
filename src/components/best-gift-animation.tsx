@@ -11,6 +11,8 @@ interface WithKey {
   key: string;
 }
 
+// https://freesvg.org/1511820216
+
 const QUOTES: Array<QuoteData> = [
   {
     quote: "That was the best gift ever!",
@@ -31,11 +33,11 @@ const QUOTES: Array<QuoteData> = [
 ]
 
 const ANIMATIONS = [
-  `animate-[fade-in-out-0_10s_infinite] self-start`,
-  `animate-[fade-in-out-1_10s_infinite] self-center`,
-  `animate-[fade-in-out-2_10s_infinite] self-start`,
-  `animate-[fade-in-out-3_10s_infinite] self-end`,
-  `animate-[fade-in-out-4_10s_infinite] self-center`,
+  `animate-[fade-in-out-0_10s_infinite] self-start  sm:self-center sm:ml-[-200px]`,
+  `animate-[fade-in-out-1_10s_infinite] self-center sm:self-center sm:ml-[0px]`,
+  `animate-[fade-in-out-2_10s_infinite] self-start  sm:self-center sm:ml-[100px]`,
+  `animate-[fade-in-out-3_10s_infinite] self-end    sm:self-center sm:ml-[200px]`,
+  `animate-[fade-in-out-4_10s_infinite] self-center sm:self-center sm:ml-[0px]`,
 ]
 
 const QUOTES_WITH_KEYS = QUOTES.map((obj, idx) => {
@@ -51,7 +53,7 @@ class BestGiftAnimationComponent extends React.Component<BestGiftAnimationCompon
 
   public render() {
     return (
-      <div className="my-5 w-full pt-20 h-10">
+      <div className="my-5 w-full pt-20 h-10 px-3">
         <ul className="flex flex-row w-full" >
           {
             QUOTES_WITH_KEYS.map((obj, idx) => {

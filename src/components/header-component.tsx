@@ -14,15 +14,21 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
 
   public render() {
     return (
-      <header className="border-b bg-stone-300 dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
+      <header className="border-b dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
         <section className="mx-2 xs:mx-5 flex flex-col">
           <div className="flex flex-row justify-between">
-              <div className="flex flex-1 flex-row py-1 justify-between">
+              <div className="flex flex-1 flex-row py-1 w-full justify-between">
                 <TitleComponent />
-                <div className="hidden flex-1 sm:flex flex-row items-center shrink-0 min-w-fit">
+                <div className="hidden flex-1 max-w-md sm:flex flex-row items-center shrink-0 min-w-fit">
                   <SearchBar />
                 </div>
-                <ControlsPanel />
+                <div className="hidden justify-self-end lg:flex flex-row items-center align-bottom">
+                  <NavBar />
+                  <ControlsPanel />
+                </div>
+                <div className="flex flex-row lg:hidden justify-self-end items-center align-bottom">
+                  <ControlsPanel />
+                </div>
               </div>
           </div>
         </section>
@@ -30,7 +36,7 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
         <section className="flex sm:hidden flex-1 flex-row py-1 justify-center items-center w-full ">
           <SearchBar />
         </section>
-        <section className="">
+        <section className="lg:hidden">
           <NavBar />
         </section>
       </header>
