@@ -49,7 +49,7 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
         title: "Personalized Golf Balls",
         tags: ["golf", "personalized"],
         html: `<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src=""></iframe>`,
-        desc: "Personalize this with the name of the book they wrote or their favorite bird for a birdie!",
+        desc: "Personalize this with the name of their favorite bird for a birdie!",
       },
       queryMatches: ["grandpa", "golf", "birds"],
     };
@@ -74,18 +74,16 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
 
             <BestGiftAnimationComponent />
 
-            <div className="items-center list-none">
+            <div className="items-center list-none my-10">
               <div className="mt-20">
                 <p className="text-xl font-bold">Grandpa + Golf + Bird = Grandpa's Favorite Birdie</p>
 
                 <GiftItemComponent giftResult={personalizedGolfBall}>
                   <StaticImage className="mt-2" alt="Grandpa's favorite birdie" src="../images/grandpas_favorite_birdie.png"/>
                 </GiftItemComponent>
-
-                <p className="mt-2">Show just how much you know him. Personalize a golfball with his favorite Birdie</p>
               </div>
 
-              <div className="mt-20">
+              <div className="mt-10">
                 <p className="text-xl font-bold">Coworker + Funny + Politics = Donald Trump Candle</p>
 
                 <GiftItemComponent giftResult={trumpCandle}>

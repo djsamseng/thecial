@@ -5,8 +5,8 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import SearchBar, { SearchBarContext } from "../../components/searchbar";
 import LayoutComponent from "../../components/layout";
-
 import GiftItemComponent, { GiftResultItem, GiftResult } from "../../components/gift-item";
+import GiftsSourceJSON from "../../../data/gifts/gifts-source.json";
 
 type GiftsSearchComponentProps = {};
 type GiftsSearchComponentState = {
@@ -15,53 +15,8 @@ type GiftsSearchComponentState = {
 
 
 function getData(): Array<GiftResultItem> {
-  const data = [
-    {
-      url: "https://www.etsy.com/listing/828799390/",
-      img: "https://i.etsystatic.com/24300406/r/il/41cf8d/2494911473/il_794xN.2494911473_k1r2.jpg",
-      title: "Golf Cheating Device",
-      tags: ["golf", "prank"],
-      description: "",
-    },
-    {
-      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B08PRTS8ZQ&asins=B08PRTS8ZQ&linkId=08d5f2060b90cdd4d801602f3876937d&show_border=true&link_opens_in_new_window=true",
-
-      url: "https://www.amazon.com/dp/B08PRTS8ZQ?_encoding=UTF8&aaxitk=725dc1b75a163389022bd2f25cede2a3&hsa_cr_id=6905224560001&pd_rd_plhdr=t&pd_rd_r=bdf49a6b-dd0a-4c02-a8b7-a1729f488941&pd_rd_w=VJVZ5&pd_rd_wg=JYawM&linkCode=li3&tag=gatherbadger-20&linkId=eb7aae2f15687d33213bee51e445cf2c&language=en_US&ref_=as_li_ss_il",
-      img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08PRTS8ZQ&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
-      title: "Family Puzzle",
-      tags: ["family", "picture", "puzzle", "personalized", ],
-      desc: "Personalize this with photos from a special vacation or wedding"
-    },
-    {
-      url: "https://www.amazon.com/gp/product/B07Q6XSVS9/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07Q6XSVS9&linkCode=as2&tag=gatherbadger-20&linkId=f780aece6a780f63aba7d88539cdd422",
-      img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07Q6XSVS9&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=gatherbadger-20",
-      title: "Personalized Hot Tub Sign",
-      tags: ["hot", "tub", "pool", "personalized"],
-      html: `<a target="_blank"  href=""><img border="0" src="" ></a>`,
-      desc: "Personalize this with the name of the street you live on or the person's nickname."
-    },
-    {
-      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B07SMB7NSW&asins=B07SMB7NSW&linkId=8eba85cbd36b7a48b6f1377b7a75bd01&show_border=true&link_opens_in_new_window=true",
-      title: "Personalized Golf Balls",
-      tags: ["golf", "personalized"],
-      html: `<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src=""></iframe>`,
-      desc: "Personalize this with the name of the book they wrote or their favorite bird for a birdie!"
-    },
-    {
-      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=1944247300&asins=1944247300&linkId=602066e3b93c400fb2c628419b5793f5&show_border=true&link_opens_in_new_window=true",
-      title: "Crossword Jigsaw Puzzle",
-      tags: ["jigsaw", "puzzle", "crossword"],
-      desc: "",
-    },
-    {
-      url: "https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li2&tag=gatherbadger-20&linkId=6bc507a87625441db09e77e4e3333dd1&language=en_US&ref_=as_li_ss_il",
-      iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B08BFJH2Y1&asins=B08BFJH2Y1&linkId=ac32dbce2bf5749b013b112b1428e19c&show_border=true&link_opens_in_new_window=true",
-      img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
-      title: "Donald Trump Candle",
-      tags: ["politics", "donald", "trump", "funny", "candle"],
-      desc: "Net Weight: Huge",
-    }
-  ];
+  const data = GiftsSourceJSON.data;
+  console.log("DATA:", data);
 
   return data.map((item, idx) => {
     item.key = idx;

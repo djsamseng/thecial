@@ -6,4 +6,7 @@
   .animation-delay-5 {
     animation-delay: 5s !important;
   }
+  input[type="search"] {
+    -webkit-appearance: none;
+  }
 }

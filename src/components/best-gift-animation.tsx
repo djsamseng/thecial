@@ -31,11 +31,11 @@ const QUOTES: Array<QuoteData> = [
 ]
 
 const ANIMATIONS = [
-  `animate-[fade-in-out-0_10s_infinite] ml-[0px]`,
-  `animate-[fade-in-out-1_10s_infinite] ml-[20px]`,
-  `animate-[fade-in-out-2_10s_infinite] ml-[0px]`,
-  `animate-[fade-in-out-3_10s_infinite] ml-[60px]`,
-  `animate-[fade-in-out-4_10s_infinite] ml-[80px]`,
+  `animate-[fade-in-out-0_10s_infinite] self-start`,
+  `animate-[fade-in-out-1_10s_infinite] self-center`,
+  `animate-[fade-in-out-2_10s_infinite] self-start`,
+  `animate-[fade-in-out-3_10s_infinite] self-end`,
+  `animate-[fade-in-out-4_10s_infinite] self-center`,
 ]
 
 const QUOTES_WITH_KEYS = QUOTES.map((obj, idx) => {
@@ -51,19 +51,19 @@ class BestGiftAnimationComponent extends React.Component<BestGiftAnimationCompon
 
   public render() {
     return (
-      <div className="my-5 w-full flex flex-col items-start sm:items-center pt-20 h-10">
-        <ul >
+      <div className="my-5 w-full pt-20 h-10">
+        <ul className="flex flex-row w-full" >
           {
             QUOTES_WITH_KEYS.map((obj, idx) => {
               return (
-                <li key={obj.key} className={ANIMATIONS[idx]}>
-                  <div >
-                    <div className="absolute">
+                <div className="absolute w-full flex flex-col px-10">
+                  <li key={obj.key} className={ANIMATIONS[idx]}>
+                    <div className="">
                       <p>{obj.quote}</p>
                       <p>- {obj.author}</p>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                </div>
               );
             })
           }

@@ -1,0 +1,38 @@
+/*
+Input Format
+-
+Title
+tags comma seperated
+desc
+iframe=iframe/blank
+img=img/blank
+url=url/blank
+
+Output Format
+{
+    "data": [
+        {
+            "url": "", // Comes from url if present, then img if present and has url
+            "iframe": "", // Parse iframe
+            "img": "", // Parse img or exact string
+            "title": "", // Exact string
+            "tags": [""], // Parse comma seperated
+            "desc": // Exact string
+        }
+    ]
+}
+
+*/
+#
+-
+Golf Cheating Device
+golf, cheating, funny,
+
+img=https://i.etsystatic.com/24300406/r/il/41cf8d/2494911473/il_794xN.2494911473_k1r2.jpg
+url=https://www.etsy.com/listing/828799390/
+-
+Personalized Hot Tub Sign
+hot, tub, pool, personalized, outdoors
+Personalize this with the name of the street you live on or the person's name
+iframe=<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B07Q6XSVS9&asins=B07Q6XSVS9&linkId=3a51d27d0a3afc0a051dd8abd6d6a4cc&show_border=true&link_opens_in_new_window=true"></iframe>
+img=<a href="https://www.amazon.com/Personalized-Welcome-Our-Metal-Sign/dp/B07Q6XSVS9?crid=26Q83D9W8RRNZ&keywords=personalized+hot+tub&qid=1645749599&sprefix=personalized+hot+tub%2Caps%2C75&sr=8-3&linkCode=li2&tag=gatherbadger-20&linkId=0e30bd143ce2f2a96fb464f14720c2b4&language=en_US&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07Q6XSVS9&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li2&o=1&a=B07Q6XSVS9" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
