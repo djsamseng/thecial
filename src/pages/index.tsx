@@ -9,8 +9,7 @@ import { SearchBarContext } from "../components/searchbar";
 import BestGiftAnimationComponent from "../components/best-gift-animation";
 import GiftItemComponent from "../components/gift-item";
 
-
-
+import HeadlineWithExamplesComponent, { ROTATION } from "../components/headline-with-examples";
 
 interface IndexPageProps extends RouteComponentProps {
 
@@ -66,6 +65,55 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
       },
       queryMatches: ["coworker", "funny", "politics"]
     }
+    const headlinesWithExamples = [
+      {
+        headline: "Personal",
+        examples: [
+          {
+            text: "Their Name",
+            rotation: ROTATION.R6,
+          },
+          {
+            text: "A Book They Wrote",
+            rotation: ROTATION.RN6,
+          },
+          {
+            text: "Their Hangout Spot",
+            rotation: ROTATION.R6,
+          }
+        ],
+      },
+      {
+        headline: "Special",
+        examples: [
+          {
+            text: "From the Heart",
+            rotation: ROTATION.RN6,
+          },
+          {
+            text: "Funny",
+            rotation: ROTATION.R6
+          }
+        ]
+      },
+      {
+        headline: "All About Them",
+        examples: [
+          {
+            text: "Hobbies",
+            rotation: ROTATION.R6,
+          },
+          {
+            text: "Sports",
+            rotation: ROTATION.R0,
+          },
+          {
+            text: "Passions",
+            rotation: ROTATION.RN6,
+          }
+        ],
+      }
+    ]
     return (
       <SearchBarContext.Provider value={searchContext}>
         <LayoutComponent pageTitle="Home Page">
@@ -73,109 +121,32 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
             <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
               <div className="flex flex-row justify-center">
                 <div className="flex flex-col">
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold">Find the Perfect Gift</h1>
-                  <div className="flex flex-col items-end">
-                    <p className="text-2xl mt-10">How?</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <p className="text-2xl mt-10">Well it's</p>
-                  </div>
-                  <ul className="mt-10 text-3xl space-y-2">
-                    <li className="">
-                      <div className="">
-                        Personal
-                      </div>
-                      <div className="flex flex-row space-x-10">
-                        <div className="text-lg m-5 ml-10 flex-1 flex flex-row justify-around">
-                          <div className="text-lg rotate-12">
-                            Their Name
-                          </div>
-                          <div className="text-lg -rotate-12">
-                            A Book They Wrote
-                          </div>
-                          <div className="text-lg rotate-12">
-                            Their Favorite Spot
-                          </div>
-                        </div>
-
-                      </div>
-                    </li>
-                    <li className="">
-                      <div className="">
-                        Special
-                      </div>
-                      <div className="flex flex-row space-x-10">
-                        <div className="text-lg m-5 ml-10 flex-1 flex flex-row justify-around">
-                          <div className="text-lg -rotate-12">
-                            From the Heart
-                          </div>
-                          <div className="text-lg rotate-12">
-                            Funny
-                          </div>
-                        </div>
-
-                      </div>
-                    </li>
-                    <li className="">
-                      <div className="">
-                        And <span className="font-medium">All About Them</span>
-                      </div>
-                      <div className="flex flex-row space-x-10">
-                        <div className="text-lg m-5 ml-10 flex-1 flex flex-row justify-around">
-                          <div className="text-lg rotate-12">
-                            Hobbies
-                          </div>
-                          <div className="text-lg my-5">
-                            Sports
-                          </div>
-                          <div className="text-lg -rotate-12">
-                            Passions
-                          </div>
-                        </div>
-
-                      </div>
-                    </li>
-                  </ul>
-                  <div className="flex flex-col items-end">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-center">Find the Perfect Gift</h1>
+                  <HeadlineWithExamplesComponent headlines={headlinesWithExamples}/>
+                  <div className="flex flex-col items-center sm:items-end">
                     <div className="flex flex-row space-x-4">
                       <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/gifts">Get Started</Link>
                       <Link className="text-2xl mt-10 border border-slate-600 rounded-md p-1 px-2" to="/guide">Read the Guide</Link>
                     </div>
-
                   </div>
-
                 </div>
-
-
               </div>
-
             </div>
-
             <BestGiftAnimationComponent />
-
-
             <div className="items-center list-none my-10 px-3">
               <div className="mt-20">
                 <p className="text-xl font-bold">Grandpa + Golf + Bird = Grandpa's Favorite Birdie</p>
-
                 <GiftItemComponent giftResult={personalizedGolfBall}>
                   <StaticImage className="mt-2" alt="Grandpa's favorite birdie" src="../images/grandpas_favorite_birdie.png"/>
                 </GiftItemComponent>
               </div>
-
               <div className="mt-10">
                 <p className="text-xl font-bold">Coworker + Funny + Politics = Donald Trump Candle</p>
-
                 <GiftItemComponent giftResult={trumpCandle}>
                 </GiftItemComponent>
               </div>
             </div>
-
-
-
-
           </div>
-
         </LayoutComponent>
       </SearchBarContext.Provider>
     );

@@ -23,7 +23,7 @@ const QUOTES: Array<QuoteData> = [
     author: "Adam"
   },
   {
-    quote: "Thank you so much, this meant the world to me :)",
+    quote: "Thank you so much, this meant the world :)",
     author: "Megan",
   },
   {
@@ -35,7 +35,7 @@ const QUOTES: Array<QuoteData> = [
 const ANIMATIONS = [
   `animate-[fade-in-out-0_10s_infinite] self-start  sm:self-center sm:ml-[-200px]`,
   `animate-[fade-in-out-1_10s_infinite] self-center sm:self-center sm:ml-[0px]`,
-  `animate-[fade-in-out-2_10s_infinite] self-start  sm:self-center sm:ml-[100px]`,
+  `animate-[fade-in-out-2_10s_infinite] self-start  sm:self-center sm:ml-[-200px]`,
   `animate-[fade-in-out-3_10s_infinite] self-end    sm:self-center sm:ml-[200px]`,
   `animate-[fade-in-out-4_10s_infinite] self-center sm:self-center sm:ml-[0px]`,
 ]
@@ -58,7 +58,7 @@ class BestGiftAnimationComponent extends React.Component<BestGiftAnimationCompon
           {
             QUOTES_WITH_KEYS.map((obj, idx) => {
               return (
-                <div className="absolute w-full flex flex-col px-10">
+                <div className="absolute w-full flex flex-col px-5 sm:px-10">
                   <li key={obj.key} className={ANIMATIONS[idx]}>
                     <div className="">
                       <p>{obj.quote}</p>
