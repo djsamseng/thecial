@@ -34,7 +34,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     }
     else if (item.img) {
       img = (
-        <img className="ml-5 mt-1 max-w-xs" src={item.img}></img>
+        <img className="ml-5 mt-1 max-w-xs" src={item.img} alt={item.title}></img>
       )
     }
     else if (item.iframe) {

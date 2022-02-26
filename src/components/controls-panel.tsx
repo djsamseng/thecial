@@ -32,7 +32,7 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
     return (
       <div className="justify-self-end shrink flex flex-col items-end">
         <div className="flex-1 flex flex-row items-center">
-          <button className="px-4" onClick={this.onToggleDarkTheme.bind(this)}>
+          <button className="px-4" onClick={this.onToggleDarkTheme.bind(this)} aria-label="Toggle dark theme">
             {icon}
           </button>
         </div>

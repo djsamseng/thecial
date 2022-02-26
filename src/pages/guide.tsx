@@ -1,6 +1,7 @@
 import React from "react";
 
 import LayoutComponent from "../components/layout";
+import SEOComponent from "../components/seo-component";
 
 type GuidePageProps = {};
 type GuidePageState = {};
@@ -13,6 +14,7 @@ class GuidePage extends React.Component<GuidePageProps, GuidePageState> {
   public render() {
     return (
       <LayoutComponent pageTitle="Guide">
+        <SEOComponent title="Guide" />
         <div className="px-3">
           <h2>Step 1: What is unique to them?</h2>
           <ul>

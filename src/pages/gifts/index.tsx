@@ -6,6 +6,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import SearchBar, { SearchBarContext } from "../../components/searchbar";
 import LayoutComponent from "../../components/layout";
 import GiftItemComponent, { GiftResultItem, GiftResult } from "../../components/gift-item";
+import SEOComponent from "../../components/seo-component";
 import GiftsSourceJSON from "../../../data/gifts/gifts-source.json";
 
 type GiftsSearchComponentProps = {};
@@ -16,7 +17,6 @@ type GiftsSearchComponentState = {
 
 function getData(): Array<GiftResultItem> {
   const data = GiftsSourceJSON.data;
-  console.log("DATA:", data);
 
   return data.map((item, idx) => {
     item.key = idx;
@@ -128,7 +128,6 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
       return;
     }
     if (window.innerHeight + document.documentElement.scrollTop + 20 >= document.scrollingElement.scrollHeight) {
-      console.log("Should load more elements");
       this.setState({
         maxResults: this.state.maxResults + 5,
       })
@@ -174,6 +173,7 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
     return (
       <SearchBarContext.Provider value={searchContext}>
         <LayoutComponent pageTitle="Gifts">
+          <SEOComponent title="Gifts"/>
           <GiftsSearchComponent />
         </LayoutComponent>
       </SearchBarContext.Provider>

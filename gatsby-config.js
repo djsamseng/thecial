@@ -6,6 +6,8 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.gatherbadger.com",
     title: "Gather Badger",
+    description: "Find the perfect gift. Gather Badger helps you find the perfect gift by searching our hand crafted list.",
+    author: "Gather Badger"
   },
   plugins: [
     "gatsby-plugin-dts-css-modules",
@@ -28,6 +30,7 @@ module.exports = {
     "gatsby-plugin-mdx",
     "gatsby-plugin-postcss",
     "gatsby-plugin-preact",
+    "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     {
       resolve: `gatsby-plugin-manifest`,

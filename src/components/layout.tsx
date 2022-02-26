@@ -20,7 +20,6 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
   public render() {
     return (
       <div className="relative bg-transparent flex flex-col min-h-screen w-full justify-between font-roboto dark:text-slate-200">
-        <title>{this.props.pageTitle}</title>
         <HeaderComponent />
         <main className="mb-auto min-h-[600px]">
           {this.props.children}

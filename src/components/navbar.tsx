@@ -15,7 +15,7 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
       { text: "Blog", href: "/blog" },
     ].map(item => {
       return (
-        <li>
+        <li className="h-12 w-12 flex flex-row items-center">
           <Link to={item.href} className="hover:text-gray-400">
             {item.text}
           </Link>

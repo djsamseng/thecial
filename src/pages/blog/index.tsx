@@ -2,6 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 
 import LayoutComponent from "../../components/layout";
+import SEOComponent from "../../components/seo-component";
 
 type BlogPageProps = {
   data: {
@@ -27,6 +28,7 @@ class BlogPage extends React.Component<BlogPageProps, BlogPageState> {
   public render() {
     return (
       <LayoutComponent pageTitle="Blog">
+        <SEOComponent title="Blog" />
         <div className="px-3">
           {
             this.props.data.allMdx.nodes.map(node => {

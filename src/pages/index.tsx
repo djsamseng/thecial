@@ -8,6 +8,7 @@ import LayoutComponent from "../components/layout";
 import { SearchBarContext } from "../components/searchbar";
 import BestGiftAnimationComponent from "../components/best-gift-animation";
 import GiftItemComponent from "../components/gift-item";
+import SEOComponent from "../components/seo-component";
 
 import HeadlineWithExamplesComponent, { ROTATION } from "../components/headline-with-examples";
 
@@ -117,6 +118,7 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
     return (
       <SearchBarContext.Provider value={searchContext}>
         <LayoutComponent pageTitle="Home Page">
+          <SEOComponent title="Home Page"/>
           <div className="flex flex-col items-center">
             <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
               <div className="flex flex-row justify-center">
