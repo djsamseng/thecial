@@ -11,6 +11,7 @@ import GiftItemComponent from "../components/gift-item";
 import SEOComponent from "../components/seo-component";
 
 import HeadlineWithExamplesComponent, { ROTATION } from "../components/headline-with-examples";
+import CategoriesGridComponent from "../components/categories-grid";
 
 interface IndexPageProps extends RouteComponentProps {
 
@@ -120,10 +121,19 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
         <LayoutComponent pageTitle="Home Page">
           <SEOComponent title="Home Page"/>
           <div className="flex flex-col items-center">
+            <div className=" flex flex-row items-center justify-center self-stretch pb-10 px-3 min-h-[300px]">
+              <div className="">
+                <div className="flex flex-col">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-center">Find the Perfect Gift</h1>
+                </div>
+              </div>
+            </div>
+            <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
+              <CategoriesGridComponent />
+            </div>
             <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
               <div className="flex flex-row justify-center">
                 <div className="flex flex-col">
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-center">Find the Perfect Gift</h1>
                   <HeadlineWithExamplesComponent headlines={headlinesWithExamples}/>
                   <div className="flex flex-col items-center sm:items-end">
                     <div className="flex flex-row space-x-4">

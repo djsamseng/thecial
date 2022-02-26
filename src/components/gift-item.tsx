@@ -45,7 +45,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""
     return (
       <li className="mt-5 border-[1px] rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800" key={item.key}>
-        <a target="_blank" href={item.url}>
+        <a target="_blank" rel="noopener" href={item.url}>
           <p className="text-2xl">{item.title}</p>
           <div className="flex flex-row items-baseline">
             {img}
