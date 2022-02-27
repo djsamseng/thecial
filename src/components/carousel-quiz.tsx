@@ -24,7 +24,7 @@ class CarouselQuizElement extends React.Component<CarouselQuizElementProps, Caro
       <Link className="m-4 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-800" to="/gifts" state={{ searchText: this.props.searchText}}>
         <div className="flex flex-col items-stretch">
           <div className="flex flex-row mb-1">
-            <input className="flex-1 pl-1 border-slate-500 border-2 rounded-lg rounded-r-none border-r-0 border-opacity-50 dark:border-slate-700"
+            <input className="flex-1 pl-1 text-black dark:text-white border-slate-500 border-2 rounded-lg rounded-r-none border-r-0 border-opacity-50 dark:border-slate-700"
                 type="search"
                 value={this.props.quizText}
                 disabled={true}

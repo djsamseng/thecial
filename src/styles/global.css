@@ -1366,6 +1366,11 @@ input[type="search"] {
   color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .opacity-50 {
   opacity: 0.5;
 }
