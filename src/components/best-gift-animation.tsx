@@ -53,12 +53,12 @@ class BestGiftAnimationComponent extends React.Component<BestGiftAnimationCompon
 
   public render() {
     return (
-      <div className="my-5 w-full pt-20 h-10 px-3">
+      <div className="my-5 w-full pt-20 h-10">
         <div className="flex flex-row w-full" >
           {
             QUOTES_WITH_KEYS.map((obj, idx) => {
               return (
-                <div className="absolute flex flex-col w-full">
+                <div className="absolute flex flex-col w-full px-3">
                   <div key={obj.key} className={ANIMATIONS[idx]}>
                     <div className="">
                       <p>{obj.quote}</p>
