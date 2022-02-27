@@ -10,7 +10,6 @@ import BestGiftAnimationComponent from "../components/best-gift-animation";
 import GiftItemComponent from "../components/gift-item";
 import SEOComponent from "../components/seo-component";
 
-import HeadlineWithExamplesComponent, { ROTATION } from "../components/headline-with-examples";
 import CategoriesGridComponent from "../components/categories-grid";
 
 interface IndexPageProps extends RouteComponentProps {
@@ -67,61 +66,13 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
       },
       queryMatches: ["coworker", "funny", "politics"]
     }
-    const headlinesWithExamples = [
-      {
-        headline: "Personal",
-        examples: [
-          {
-            text: "Their Name",
-            rotation: ROTATION.R6,
-          },
-          {
-            text: "A Book They Wrote",
-            rotation: ROTATION.RN6,
-          },
-          {
-            text: "Their Hangout Spot",
-            rotation: ROTATION.R6,
-          }
-        ],
-      },
-      {
-        headline: "Special",
-        examples: [
-          {
-            text: "From the Heart",
-            rotation: ROTATION.RN6,
-          },
-          {
-            text: "Funny",
-            rotation: ROTATION.R6
-          }
-        ]
-      },
-      {
-        headline: "All About Them",
-        examples: [
-          {
-            text: "Hobbies",
-            rotation: ROTATION.R6,
-          },
-          {
-            text: "Sports",
-            rotation: ROTATION.R0,
-          },
-          {
-            text: "Passions",
-            rotation: ROTATION.RN6,
-          }
-        ],
-      }
-    ]
+
     return (
       <SearchBarContext.Provider value={searchContext}>
         <LayoutComponent pageTitle="Home Page">
           <SEOComponent title="Home Page"/>
           <div className="flex flex-col items-center">
-            <div className=" flex flex-row items-center justify-center self-stretch pb-10 px-3 min-h-[300px]">
+            <div className=" flex flex-row items-center justify-center self-stretch pb-10 px-3 min-h-[100px]">
               <div className="">
                 <div className="flex flex-col">
                   <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-center">Find the Perfect Gift</h1>
@@ -131,21 +82,9 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
             <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
               <CategoriesGridComponent />
             </div>
-            <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
-              <div className="flex flex-row justify-center">
-                <div className="flex flex-col">
-                  <HeadlineWithExamplesComponent headlines={headlinesWithExamples}/>
-                  <div className="flex flex-col items-center sm:items-end">
-                    <div className="flex flex-row space-x-4">
-                      <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/gifts">Get Started</Link>
-                      <Link className="text-2xl mt-10 border border-slate-600 rounded-md p-1 px-2" to="/guide">Read the Guide</Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <BestGiftAnimationComponent />
-            <div className="items-center list-none my-10 px-3">
+            <div className="border-b dark:border-gray-700 items-center list-none my-10 pb-10 px-3">
               <div className="mt-20">
                 <p className="text-xl font-bold">Grandpa + Golf + Bird = Grandpa's Favorite Birdie</p>
                 <GiftItemComponent giftResult={personalizedGolfBall}>
@@ -156,6 +95,11 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
                 <p className="text-xl font-bold">Coworker + Funny + Politics = Donald Trump Candle</p>
                 <GiftItemComponent giftResult={trumpCandle}>
                 </GiftItemComponent>
+              </div>
+              <div className="flex flex-col items-center sm:items-end">
+                <div className="flex flex-row space-x-4">
+                  <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/guide">More Examples</Link>
+                </div>
               </div>
             </div>
           </div>

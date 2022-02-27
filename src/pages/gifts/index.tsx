@@ -72,7 +72,13 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
   public render() {
     const { searchText, setSearchText, submitSearch } = useContext(SearchBarContext);
     const matches = this.getMatches(searchText.toLowerCase());
-
+    if (matches.length == 0) {
+      return (
+        <div className="pt-5 pb-20 px-3 items-center">
+          Nothing Found!
+        </div>
+      )
+    }
     return (
       <div className="pt-5 pb-20 px-3 items-center">
         <ul className="">
@@ -146,6 +152,8 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
   constructor(props: GiftsIndexPageProps) {
     super(props);
     let searchText = "";
+    console.log("Created with props:", this.props);
+
     if (this.props.location.state && (this.props.location.state as any).searchText) {
       searchText = (this.props.location.state as any).searchText;
     }
