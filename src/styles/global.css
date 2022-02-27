@@ -863,8 +863,8 @@ input[type="search"] {
   width: 1.25rem;
 }
 
-.w-\[400px\] {
-  width: 400px;
+.w-\[340px\] {
+  width: 340px;
 }
 
 .w-6 {
@@ -881,14 +881,6 @@ input[type="search"] {
 
 .w-10 {
   width: 2.5rem;
-}
-
-.w-\[300px\] {
-  width: 300px;
-}
-
-.w-\[340px\] {
-  width: 340px;
 }
 
 .min-w-fit {
@@ -1122,6 +1114,14 @@ input[type="search"] {
   border-bottom-width: 1px;
 }
 
+.border-b-0 {
+  border-bottom-width: 0px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-slate-500 {
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
@@ -1173,10 +1173,6 @@ input[type="search"] {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-opacity-50 {
-  --tw-bg-opacity: 0.5;
 }
 
 .fill-stone-300 {
@@ -1299,12 +1295,12 @@ input[type="search"] {
   color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
-.opacity-50 {
-  opacity: 0.5;
-}
-
 .opacity-75 {
   opacity: 0.75;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .filter {
@@ -1356,13 +1352,23 @@ input[type="search"] {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
-.dark .dark\:fill-slate-600 {
-  fill: #475569;
+.dark .dark\:bg-stone-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(68 64 60 / var(--tw-bg-opacity));
 }
 
-.dark .dark\:text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+.dark .dark\:bg-stone-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:fill-slate-600 {
+  fill: #475569;
 }
 
 .dark .dark\:text-black {
@@ -1373,6 +1379,11 @@ input[type="search"] {
 .dark .dark\:text-slate-200 {
   --tw-text-opacity: 1;
   color: rgb(226 232 240 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .dark .dark\:opacity-50 {
@@ -1429,6 +1440,11 @@ input[type="search"] {
     align-self: center;
   }
 
+  .sm\:rounded-b-lg {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
   .sm\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -1466,10 +1482,6 @@ input[type="search"] {
   .xs\:mx-5 {
     margin-left: 1.25rem;
     margin-right: 1.25rem;
-  }
-
-  .xs\:w-\[400px\] {
-    width: 400px;
   }
 
   .xs\:text-2xl {
