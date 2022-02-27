@@ -24,8 +24,8 @@ class CarouselQuizElement extends React.Component<CarouselQuizElementProps, Caro
       <Link className="m-4 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-800" to="/gifts" state={{ searchText: this.props.searchText}}>
         <div className="flex flex-col items-stretch">
           <div className="flex flex-row mb-1">
-            <input className="flex-1 pl-1 text-black dark:text-white border-slate-500 border-2 rounded-lg rounded-r-none border-r-0 border-opacity-50 dark:border-slate-700"
-                type="search"
+            <input className="flex-1 pl-1 text-black dark:text-black border-slate-500 border-2 rounded-lg rounded-r-none border-r-0 opacity-75 border-opacity-50 dark:border-slate-700"
+                type="text"
                 value={this.props.quizText}
                 disabled={true}
                 aria-disabled={true}
@@ -43,7 +43,7 @@ class CarouselQuizElement extends React.Component<CarouselQuizElementProps, Caro
           </div>
 
           {this.props.image}
-          <div className="h-[40px] mt-[-40px] z-10 rounded-b-lg bg-gray-900 opacity-50">
+          <div className="h-[40px] mt-[-40px] z-10 bg-gray-900 opacity-50">
           </div>
           <div className="mt-[-40px] flex flex-col z-20 items-center text-xl text-white">
             {this.props.answerText}
@@ -118,7 +118,7 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
             answerText="Personalized Golf Balls"
             searchText="golf bird watching" />
           <CarouselQuizElement image={(
-              <div className="w-[400px] mb-10 mt-[-24px] list-none">
+              <div className="w-[340px] sm:w-[400px] mb-10 mt-[-24px] list-none">
                 <GiftItemComponent giftResult={trumpCandle} />
               </div>
             )}
@@ -131,7 +131,6 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
             </div>
           </div>
         </div>
-
       </div>
     );
   }
