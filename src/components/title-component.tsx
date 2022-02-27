@@ -19,7 +19,11 @@ const TitleComponent = () => {
       <p className="sr-only">{data.site.siteMetadata.title}</p>
       <Link to="/" className="flex flex-row flex-nowrap items-center">
         <StaticImage className="mr-5" height={60} alt="Gather Badger" src="../images/badger-logo.svg"/>
-        <div className="whitespace-nowrap">{data.site.siteMetadata.title}</div>
+        <div className="flex flex-col items-center">
+          <div className="whitespace-nowrap">{data.site.siteMetadata.title}</div>
+          <div className="whitespace-nowrap text-sm">Find the Perfect Gift</div>
+        </div>
+
       </Link>
     </div>
   );

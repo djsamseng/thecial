@@ -45,16 +45,16 @@ class CategoriesGridComponent extends React.Component<CategoriesGridComponentPro
       <div className="flex flex-row justify-center">
         <div className="flex flex-col items-center">
 
-          <GridElementComponent image={(<StaticImage className="" alt="Personal" src="../images/GrandmasRuffles.jpg" width={400}/>)}
-            text="Personal"
+          <GridElementComponent image={(<StaticImage className="" alt="Personal" src="../images/grandmas-ruffles.png" width={400}/>)}
+            text="Grandma + Potato Chips = Personalized Potato Chips Bag"
             searchText="personal" />
           <div className="flex flex-col items-center">
             <div className="flex flex-row items-center">
-              <GridElementComponent image={(<StaticImage alt="Special" src="../images/SniperMomChocolate.png" width={300}/>)}
-                text="Special"
+              <GridElementComponent image={(<StaticImage alt="Special" src="../images/jen-nfl-leather.png" width={300}/>)}
+                text="Football + iPhone + Personalized = Custom NFL Logo Phone Charger"
                 searchText="special" />
-              <GridElementComponent image={(<StaticImage alt="All About Them" src="../images/grandpas_favorite_birdie.png" width={300}/>)}
-                text="All About Them"
+              <GridElementComponent image={(<StaticImage alt="All About Them" src="../images/grandpas-favorite-birdie.png" width={300}/>)}
+                text="Grandpa + Golf + Bird Watching = Personalized Golf Balls"
                 searchText="grandpa golf bird watching" />
             </div>
           </div>

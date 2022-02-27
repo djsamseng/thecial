@@ -10,6 +10,7 @@ import BestGiftAnimationComponent from "../components/best-gift-animation";
 import GiftItemComponent from "../components/gift-item";
 import SEOComponent from "../components/seo-component";
 
+import CarouselQuizComponent, { CarouselQuizComponent2 } from "../components/carousel-quiz";
 import CategoriesGridComponent from "../components/categories-grid";
 
 interface IndexPageProps extends RouteComponentProps {
@@ -72,36 +73,16 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
         <LayoutComponent pageTitle="Home Page">
           <SEOComponent title="Home Page"/>
           <div className="flex flex-col items-center">
-            <div className=" flex flex-row items-center justify-center self-stretch pb-10 px-3 min-h-[100px]">
-              <div className="">
-                <div className="flex flex-col">
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-center">Find the Perfect Gift</h1>
-                </div>
-              </div>
-            </div>
             <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
-              <CategoriesGridComponent />
+              <CarouselQuizComponent />
             </div>
 
             <BestGiftAnimationComponent />
-            <div className="border-b dark:border-gray-700 items-center list-none my-10 pb-10 px-3">
-              <div className="mt-20">
-                <p className="text-xl font-bold">Grandpa + Golf + Bird = Grandpa's Favorite Birdie</p>
-                <GiftItemComponent giftResult={personalizedGolfBall}>
-                  <StaticImage className="mt-2" alt="Grandpa's favorite birdie" src="../images/grandpas_favorite_birdie.png"/>
-                </GiftItemComponent>
-              </div>
-              <div className="mt-10">
-                <p className="text-xl font-bold">Coworker + Funny + Politics = Donald Trump Candle</p>
-                <GiftItemComponent giftResult={trumpCandle}>
-                </GiftItemComponent>
-              </div>
-              <div className="flex flex-col items-center sm:items-end">
-                <div className="flex flex-row space-x-4">
-                  <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/guide">More Examples</Link>
-                </div>
-              </div>
+
+            <div className="border-t dark:border-gray-700 self-stretch mt-[120px] pb-10 px-3">
+              <CarouselQuizComponent2 />
             </div>
+
           </div>
         </LayoutComponent>
       </SearchBarContext.Provider>
