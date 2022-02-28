@@ -21,7 +21,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
           {({ searchText, setSearchText, submitSearch }) => (
             <form className="flex-1 flex flex-row text-slate-900 " onSubmit={this.onSearchSubmit.bind(this, submitSearch)}>
               <input className="flex-1 pl-1 text-black dark:text-white bg-stone-50 hover:bg-white dark:bg-slate-500 border-slate-500 border-2 rounded-lg rounded-r-none border-r-0  dark:border-slate-700"
-                type="search"
+                type="text"
                 onChange={(evt) => setSearchText(evt.target.value)}
                 value={searchText}
                 aria-label="Search input"

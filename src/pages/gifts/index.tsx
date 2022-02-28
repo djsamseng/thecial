@@ -14,7 +14,6 @@ type GiftsSearchComponentState = {
   maxResults: number;
 }
 
-
 function getData(): Array<GiftResultItem> {
   const data = GiftsSourceJSON.data;
 
@@ -126,6 +125,15 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
         matches = Object.values(matchesObj);
       }
     }
+    matches.sort((a, b) => {
+      if (a.queryMatches.length < b.queryMatches.length) {
+        return 1;
+      }
+      else if (a.queryMatches.length > b.queryMatches.length) {
+        return -1;
+      }
+      return 0;
+    });
     return matches.slice(0, this.state.maxResults);
   }
 

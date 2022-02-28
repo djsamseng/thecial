@@ -116,7 +116,7 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
           <CarouselQuizElement image={(<StaticImage className="" alt="Personalized Golf Balls" src="../images/grandpas-favorite-birdie.png" width={400}/>)}
             quizText="Golf + Bird Watching"
             answerText="Personalized Golf Balls"
-            searchText="golf bird watching" />
+            searchText="golf bird watching personalized" />
           <CarouselQuizElement image={(
               <div className="w-[340px] sm:w-[400px] mb-10 mt-[-24px] list-none">
                 <GiftItemComponent giftResult={trumpCandle} />
