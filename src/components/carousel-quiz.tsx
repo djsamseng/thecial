@@ -100,13 +100,26 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
   public render() {
     const trumpCandle = {
       item: {
-        key: "2",
-        url: "https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li2&tag=gatherbadger-20&linkId=6bc507a87625441db09e77e4e3333dd1&language=en_US&ref_=as_li_ss_il",
-        iframe: "//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=gatherbadger-20&language=en_US&marketplace=amazon&region=US&placement=B08BFJH2Y1&asins=B08BFJH2Y1&linkId=ac32dbce2bf5749b013b112b1428e19c&show_border=true&link_opens_in_new_window=true",
-        img: "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
-        title: "Donald Trump Candle",
-        tags: ["politics", "donald", "trump", "funny", "candle"],
-        desc: "Net Weight: Huge",
+        "id": 6,
+        "url": "https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li3&tag=gatherbadger-20&linkId=2920bd2896ecbca9d8d103bdb3b8d076&language=en_US&ref_=as_li_ss_il",
+        "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+        "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B08BFJH2Y1",
+        "img_amazon_orig": "<a href=\"https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li3&tag=gatherbadger-20&linkId=2920bd2896ecbca9d8d103bdb3b8d076&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B08BFJH2Y1\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
+        "desc": "Net Weight: Huge",
+        "title": "Donald Trump Candle",
+        "tags": [
+            "prank",
+            "box",
+            "joke",
+            "politics",
+            "donald",
+            "trump",
+            "funny",
+            "candle",
+            "huge",
+            "net",
+            "weight"
+        ]
       },
       queryMatches: ["coworker", "funny", "politics"]
     }

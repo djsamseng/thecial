@@ -17,10 +17,7 @@ type GiftsSearchComponentState = {
 function getData(): Array<GiftResultItem> {
   const data = GiftsSourceJSON.data;
 
-  return data.map((item, idx) => {
-    item.key = idx;
-    return item;
-  });
+  return data;
 }
 
 function getTagToData(data) {
@@ -112,13 +109,13 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
         for (const word of wordsAry) {
           if (TAG_TO_GIFT_RESULT[word]) {
             TAG_TO_GIFT_RESULT[word].forEach(item => {
-              if (!matchesObj[item.key]) {
-                matchesObj[item.key] = {
+              if (!matchesObj[item.id]) {
+                matchesObj[item.id] = {
                   queryMatches: [],
                   item: item,
                 }
               }
-              matchesObj[item.key].queryMatches.push(word);
+              matchesObj[item.id].queryMatches.push(word);
             });
           }
         }

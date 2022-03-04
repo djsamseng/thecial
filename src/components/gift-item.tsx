@@ -1,14 +1,16 @@
 import React from "react";
 
 export type GiftResultItem = {
-  key: string;
-  url?: string;
+  id: string|number;
   title: string;
-  tags: Array<string>;
-  img?: string;
+  url: string;
+  img: string;
+  img_amazon_ad?: string;
+  img_amazon_orig?: string;
   iframe?: string;
-  desc: string;
-}
+  desc?: string;
+  tags: Array<string>;
+};
 export type GiftResult = {
   queryMatches: Array<string>;
   item: GiftResultItem;
