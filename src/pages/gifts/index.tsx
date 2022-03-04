@@ -46,7 +46,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
   constructor(props: GiftsSearchComponentProps) {
     super(props);
     this.state = {
-      maxResults: 5,
+      maxResults: 8,
     }
   }
 
@@ -140,7 +140,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     }
     if (window.innerHeight + document.documentElement.scrollTop + 20 >= document.scrollingElement.scrollHeight) {
       this.setState({
-        maxResults: this.state.maxResults + 5,
+        maxResults: this.state.maxResults + 8,
       })
     }
   }
@@ -168,6 +168,12 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
   }
 
   public render() {
+    if (this.props.location.state && (this.props.location.state as any).source === "navbar") {
+      (this.props.location.state as any).source = "self";
+      this.setState({
+        searchText: "",
+      });
+    }
     const searchContext = {
       searchText: this.state.searchText,
       setSearchText: (val) => {

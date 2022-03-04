@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-import GiftItemComponent from "./gift-item";
+import GiftItemComponent, { GiftResult } from "./gift-item";
 
 
 type CarouselQuizElementProps = {
@@ -71,7 +71,11 @@ class CarouselQuizComponent extends React.Component<CarouselQuizComponentProps, 
               quizText="Family + Games"
               answerText="Photo Playing Cards"
               searchText="family games playing cards" />
-            <CarouselQuizElement image={(<StaticImage className="" alt="Personalized Golf Balls" src="../images/grandpas-favorite-birdie.png" width={400}/>)}
+            <CarouselQuizElement image={(<StaticImage className="" alt="Photo Playing Cards" src="../images/garden-markers.png" height={293} width={400}/>)}
+              quizText="Gardening + Personalized"
+              answerText="Custom Garden Markers"
+              searchText="personalized garden markers" />
+            <CarouselQuizElement image={(<StaticImage className="" alt="Personalized Golf Balls" src="../images/grandpas-favorite-birdie.png" height={293} width={400}/>)}
               quizText="Golf + Bird Watching"
               answerText="Personalized Golf Balls"
               searchText="golf bird watching personalized" />
@@ -97,17 +101,75 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
   }
 
   public render() {
+    const harryPotterWand: GiftResult = {
+      item: {
+        "id": 18,
+        "url": "https://www.amazon.com/HARRY-POTTER-Remote-Control-Wand/dp/B00FXMDRZK?crid=1UYG5DZ1VJKPT&keywords=wand+tv+remote&qid=1646422369&sprefix=wand+tv+remote%2Caps%2C70&sr=8-1&linkCode=li3&tag=gatherbadger-20&linkId=585a444695c834b7298577f608486e70&language=en_US&ref_=as_li_ss_il",
+        "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00FXMDRZK&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+        "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B00FXMDRZK",
+        "img_amazon_orig": "<a href=\"https://www.amazon.com/HARRY-POTTER-Remote-Control-Wand/dp/B00FXMDRZK?crid=1UYG5DZ1VJKPT&keywords=wand+tv+remote&qid=1646422369&sprefix=wand+tv+remote%2Caps%2C70&sr=8-1&linkCode=li3&tag=gatherbadger-20&linkId=585a444695c834b7298577f608486e70&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00FXMDRZK&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B00FXMDRZK\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
+        "desc": "",
+        "title": "Harry Potter TV Remote Control Wand",
+        "tags": [
+            "harry",
+            "potter",
+            "tv",
+            "remote",
+            "control",
+            "wand",
+            "magic",
+            "magician"
+        ]
+      },
+      queryMatches: ["tv", "harry", "potter"]
+
+    }
+    const tennisSpreader: GiftResult = {
+      item: {
+        "id": 21,
+        "url": "https://www.amazon.com/Wine-Things-00730-Tennis-Spreader/dp/B0043TAKDG?keywords=tennis+cheese+spreader&qid=1646422681&sprefix=tennis+cheese%2Caps%2C74&sr=8-1&linkCode=li3&tag=gatherbadger-20&linkId=bfc54f0de10be08ef94693640f5add43&language=en_US&ref_=as_li_ss_il",
+        "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0043TAKDG&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+        "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B0043TAKDG",
+        "img_amazon_orig": "<a href=\"https://www.amazon.com/Wine-Things-00730-Tennis-Spreader/dp/B0043TAKDG?keywords=tennis+cheese+spreader&qid=1646422681&sprefix=tennis+cheese%2Caps%2C74&sr=8-1&linkCode=li3&tag=gatherbadger-20&linkId=bfc54f0de10be08ef94693640f5add43&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0043TAKDG&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B0043TAKDG\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
+        "desc": "",
+        "title": "Tennis Cheese Spreader",
+        "tags": [
+            "tennis",
+            "cheese",
+            "spreader",
+            "knife",
+            "kitchen",
+            "crackers"
+        ]
+      },
+      queryMatches: ["tennis", "cheese"]
+    };
     return (
-      <div className="flex flex-row justify-center">
-        <div className="flex flex-col items-center">
-          <CarouselQuizElement image={(<StaticImage className="" alt="Personalized Golf Balls" src="../images/grandpas-favorite-birdie.png" width={400}/>)}
-            quizText="Golf + Bird Watching"
-            answerText="Personalized Golf Balls"
-            searchText="golf bird watching personalized" />
-          <div className="flex flex-col items-center sm:items-end">
-            <div className="flex flex-row space-x-4">
-              <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/guide">More Examples</Link>
-            </div>
+      <div className="flex flex-col items-center">
+        <div className="flex flex-row justify-center">
+          <div className="flex flex-row items-start flex-wrap justify-center">
+            <CarouselQuizElement image={(
+                <div className="w-[340px] sm:w-[420px] mb-10 mt-[-24px] list-none">
+                  <GiftItemComponent giftResult={harryPotterWand}/>
+                </div>
+              )}
+              quizText="TV + Harry Potter"
+              answerText="TV Remote Control Wand"
+              searchText="harry potter tv remote control" />
+            <CarouselQuizElement image={(
+                <div className="w-[340px] sm:w-[420px] mb-10 mt-[-24px] list-none">
+                  <GiftItemComponent giftResult={tennisSpreader}/>
+                </div>
+              )}
+              quizText="Tennis + Cheese"
+              answerText="Tennis Cheese Spreader"
+              searchText="tennis cheese" />
+
+          </div>
+        </div>
+        <div className="flex flex-col items-center sm:items-end">
+          <div className="flex flex-row space-x-4">
+            <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/gifts">More Examples</Link>
           </div>
         </div>
       </div>
