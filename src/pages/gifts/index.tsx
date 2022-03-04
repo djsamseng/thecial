@@ -77,7 +77,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     }
     return (
       <div className="pt-5 pb-20 px-3 items-center">
-        <ul className="">
+        <ul className="flex flex-row flex-wrap items-start justify-center space-x-2">
           {
             matches.map(giftResult => {
               return (

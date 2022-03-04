@@ -835,6 +835,22 @@ input[type="search"] {
   height: 100%;
 }
 
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-\[400px\] {
+  height: 400px;
+}
+
+.h-\[460px\] {
+  height: 460px;
+}
+
+.max-h-\[300px\] {
+  max-height: 300px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -869,6 +885,10 @@ input[type="search"] {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-\[420px\] {
+  width: 420px;
 }
 
 .min-w-fit {
@@ -1021,6 +1041,12 @@ input[type="search"] {
   --tw-space-x-reverse: 0;
   margin-right: calc(3rem * var(--tw-space-x-reverse));
   margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .self-start {

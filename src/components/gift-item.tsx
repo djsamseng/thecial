@@ -36,7 +36,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     }
     else if (item.img) {
       img = (
-        <img className="ml-5 mt-1 max-w-xs" src={item.img} alt={item.title}></img>
+        <img className="ml-5 mt-1 max-w-xs max-h-[300px]" src={item.img} alt={item.title}></img>
       )
     }
     else if (item.iframe) {
@@ -46,7 +46,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     }
     let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""
     return (
-      <li className="mt-5 border rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800" key={item.key}>
+      <li className="mt-5 w-[420px] h-[460px] border rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800" key={item.key}>
         <a target="_blank" rel="noopener" href={item.url}>
           <p className="text-2xl">{item.title}</p>
           <div className="flex flex-row items-baseline">
