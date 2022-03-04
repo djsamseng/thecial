@@ -14,7 +14,7 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
 
   public render() {
     return (
-      <header className="border-b dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
+      <header className="border-b dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-2 sm:mb-5">
         <section className="ml-2 xs:ml-5 flex flex-col">
           <div className="flex flex-row justify-between">
               <div className="flex flex-1 flex-row py-1 w-full justify-between">

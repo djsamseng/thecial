@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 
-type NavBarProps = {};
+type NavBarProps = {
+  showVertical?: boolean;
+};
 type NavBarState = {};
 class NavBar extends React.Component<NavBarProps, NavBarState> {
   constructor(props:NavBarProps) {
@@ -22,9 +24,11 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
         </li>
       )
     });
+    const directionFlex = this.props.showVertical ? "flex-col" : "flex-row";
+    const spacing = this.props.showVertical ? "" : "space-x-12"
     return (
       <nav className="flex flex-row justify-center shrink py-1 pb-1" aria-label="Desktop Navigation">
-        <ul className="flex px-4 font-semibold font-heading space-x-12">
+        <ul className={`flex ${directionFlex} items-center px-4 font-semibold font-heading ${spacing}`}>
           {liItems}
         </ul>
       </nav>

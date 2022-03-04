@@ -692,6 +692,14 @@ input[type="search"] {
   top: 60px;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-14 {
+  top: 3.5rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -799,6 +807,10 @@ input[type="search"] {
   margin-top: -24px;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -855,6 +867,14 @@ input[type="search"] {
   height: 460px;
 }
 
+.h-3\/4 {
+  height: 75%;
+}
+
+.h-\[20px\] {
+  height: 20px;
+}
+
 .max-h-\[300px\] {
   max-height: 300px;
 }
@@ -865,6 +885,12 @@ input[type="search"] {
 
 .min-h-\[600px\] {
   min-height: 600px;
+}
+
+.min-h-fit {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 
 .w-full {
@@ -901,6 +927,18 @@ input[type="search"] {
 
 .w-\[340px\] {
   width: 340px;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .min-w-fit {
@@ -1035,6 +1073,10 @@ input[type="search"] {
   justify-content: space-around;
 }
 
+.justify-items-center {
+  justify-items: center;
+}
+
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -1163,6 +1205,16 @@ input[type="search"] {
   border-color: rgb(231 229 228 / var(--tw-border-opacity));
 }
 
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-slate-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 65 85 / var(--tw-border-opacity));
+}
+
 .border-opacity-50 {
   --tw-border-opacity: 0.5;
 }
@@ -1199,6 +1251,11 @@ input[type="search"] {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
 .fill-stone-300 {
@@ -1371,6 +1428,16 @@ input[type="search"] {
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-slate-900 {
+  --tw-border-opacity: 1;
+  border-color: rgb(15 23 42 / var(--tw-border-opacity));
+}
+
 .dark .dark\:border-t-gray-700 {
   --tw-border-opacity: 1;
   border-top-color: rgb(55 65 81 / var(--tw-border-opacity));
@@ -1447,6 +1514,10 @@ input[type="search"] {
 
   .sm\:mt-10 {
     margin-top: 2.5rem;
+  }
+
+  .sm\:mb-5 {
+    margin-bottom: 1.25rem;
   }
 
   .sm\:block {
