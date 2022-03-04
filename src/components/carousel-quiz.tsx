@@ -67,11 +67,11 @@ class CarouselQuizComponent extends React.Component<CarouselQuizComponentProps, 
       <div className="flex flex-col items-center">
         <div className="flex flex-row justify-center">
           <div className="flex flex-row items-start flex-wrap justify-center">
-            <CarouselQuizElement image={(<StaticImage className="" alt="Photo Playing Cards" src="../images/three-family-cards.png" width={400}/>)}
+            <CarouselQuizElement image={(<StaticImage className="" alt="Photo Playing Cards" src="../images/three-family-cards.png" height={293} width={400}/>)}
               quizText="Family + Games"
               answerText="Photo Playing Cards"
               searchText="family games playing cards" />
-            <CarouselQuizElement image={(<StaticImage className="" alt="Photo Playing Cards" src="../images/garden-markers.png" height={293} width={400}/>)}
+            <CarouselQuizElement image={(<StaticImage className="" alt="Custom Garden Markers" src="../images/garden-markers.png" height={293} width={400}/>)}
               quizText="Gardening + Personalized"
               answerText="Custom Garden Markers"
               searchText="personalized garden markers" />
