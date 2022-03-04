@@ -121,7 +121,7 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
             "magician"
         ]
       },
-      queryMatches: ["tv", "harry", "potter"]
+      queryMatches: ["TV", "harry", "potter"]
 
     }
     const tennisSpreader: GiftResult = {

@@ -36,7 +36,10 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     }
     else if (item.img) {
       img = (
-        <img className="ml-5 mt-1 max-w-xs max-h-[300px]" src={item.img} alt={item.title}></img>
+        <div className="ml-5 mt-1 max-w-xs h-[300px] bg-white">
+          <img className="max-w-xs max-h-[300px]" src={item.img} alt={item.title}></img>
+        </div>
+
       )
     }
     else if (item.iframe) {
@@ -58,6 +61,9 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
         <div className="mt-2 overflow-hidden">
           {
             giftResult.queryMatches.map(queryMatch => {
+              if (queryMatch.length > 0) {
+                queryMatch = queryMatch[0].toUpperCase() + queryMatch.slice(1);
+              }
               return (
                 <span className="mx-2 border-[1px] px-2 border-stone-200 rounded">{queryMatch}</span>
               )

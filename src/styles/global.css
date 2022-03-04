@@ -875,6 +875,10 @@ input[type="search"] {
   height: 20px;
 }
 
+.h-\[300px\] {
+  height: 300px;
+}
+
 .max-h-\[300px\] {
   max-height: 300px;
 }
