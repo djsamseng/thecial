@@ -10,6 +10,9 @@ module.exports = {
       screens: {
         'xs': '300px',
       },
+      fontFamily: {
+        "headline": ["Guardian-EgypTT","Charter","Charter Bitstream","Cambria","Noto Serif Light","Droid Serif","Georgia","serif"]
+      },
 
       keyframes: {
         fadeOut: {

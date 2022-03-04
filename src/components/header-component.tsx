@@ -15,7 +15,7 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
   public render() {
     return (
       <header className="border-b dark:bg-slate-800 dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-5">
-        <section className="mx-2 xs:mx-5 flex flex-col">
+        <section className="ml-2 xs:ml-5 flex flex-col">
           <div className="flex flex-row justify-between">
               <div className="flex flex-1 flex-row py-1 w-full justify-between">
                 <TitleComponent />
@@ -36,7 +36,7 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
         <section className="flex sm:hidden flex-1 flex-row py-1 justify-center items-center w-full ">
           <SearchBar />
         </section>
-        <section className="lg:hidden">
+        <section className="hidden sm:block lg:hidden">
           <NavBar />
         </section>
       </header>

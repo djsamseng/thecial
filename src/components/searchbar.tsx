@@ -19,8 +19,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
       <div className="flex-1 flex flex-row items-center shrink-0 min-w-fit px-1">
         <SearchBarContext.Consumer>
           {({ searchText, setSearchText, submitSearch }) => (
-            <form className="flex-1 flex flex-row text-slate-900 " onSubmit={this.onSearchSubmit.bind(this, submitSearch)}>
-              <input className="flex-1 pl-1 text-black dark:text-white bg-stone-50 hover:bg-white dark:bg-slate-500 border-slate-500 border-2 rounded-lg rounded-r-none border-r-0  dark:border-slate-700"
+            <form className="flex-1 flex flex-row text-slate-900 border-slate-500 border-2 rounded-lg dark:border-slate-700" onSubmit={this.onSearchSubmit.bind(this, submitSearch)}>
+              <input className="flex-1 pl-1 text-black dark:text-white bg-stone-50 hover:bg-white dark:bg-slate-500 rounded-l-lg"
                 type="text"
                 onChange={(evt) => setSearchText(evt.target.value)}
                 value={searchText}
@@ -28,7 +28,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
                 tabIndex={0}
                 placeholder="Search Gifts"
               />
-              <button className="bg-amber-200 border-slate-500 border-2 w-12 h-12 sm:h-10 rounded-r-lg border-l-0 flex flex-col items-center justify-center" type="submit" aria-label="search">
+              <button className="bg-amber-200 border-slate-500 rounded-r-lg w-12 h-12 sm:h-10 flex flex-col items-center justify-center" type="submit" aria-label="search">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                           xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

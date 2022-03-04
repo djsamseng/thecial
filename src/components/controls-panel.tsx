@@ -1,11 +1,13 @@
 import React from "react";
 
-type ControlsPanelProps = {};
-type ControlsPanelState = {
+import { StaticImage } from "gatsby-plugin-image";
+
+type DarkModePanelProps = {};
+type DarkModePanelState = {
   theme: string;
 };
-class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelState> {
-  constructor(props: ControlsPanelProps) {
+class DarkModePanel extends React.Component<DarkModePanelProps, DarkModePanelState> {
+  constructor(props: DarkModePanelProps) {
     super(props);
     this.state = {
       theme: typeof window !== 'undefined' ? window.__theme : null,
@@ -47,6 +49,33 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
     this.setState({
       theme: newTheme
     });
+  }
+}
+
+
+
+type ControlsPanelProps = {};
+type ControlsPanelState = {};
+
+class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelState> {
+  constructor(props: ControlsPanelProps) {
+    super(props);
+  }
+
+  public render() {
+    return (
+      <div className="justify-self-end shrink flex flex-col items-end">
+        <div className="hidden sm:flex">
+          <DarkModePanel />
+        </div>
+        <div className="flex sm:hidden">
+          <button className="h-12 w-12">
+            <StaticImage className="" height={30} alt="Open Navigation" src="../images/bars-solid.svg" />
+          </button>
+        </div>
+
+      </div>
+    )
   }
 }
 
