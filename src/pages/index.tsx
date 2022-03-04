@@ -46,8 +46,8 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
 
     return (
       <SearchBarContext.Provider value={searchContext}>
-        <LayoutComponent pageTitle="Home Page">
-          <SEOComponent title="Home Page"/>
+        <LayoutComponent pageTitle="Find the Perfect Gift">
+          <SEOComponent title="Find the Perfect Gift" titleTemplate="Gather Badger | %s"/>
           <div className="flex flex-col items-center">
             <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">
               <CarouselQuizComponent />

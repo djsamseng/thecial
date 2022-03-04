@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.gatherbadger.com",
     title: "Gather Badger",
-    description: "Find the perfect gift. Gather Badger helps you find the perfect gift by searching our hand crafted list.",
+    description: "Find the perfect gift. Search our hand crafted list of gifts or use our idea generator to come up with the perfect gift. We believe in a unique and special gift that will leave them beloved",
     author: "Gather Badger"
   },
   plugins: [
@@ -43,7 +43,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/badger-logo.svg`, // This path is relative to the root of the site.
+        icon: `src/images/badger-logo-square-48-48.png`, // This path is relative to the root of the site.
       },
     },
   ],

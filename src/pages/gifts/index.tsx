@@ -185,8 +185,8 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
     };
     return (
       <SearchBarContext.Provider value={searchContext}>
-        <LayoutComponent pageTitle="Gifts">
-          <SEOComponent title="Gifts"/>
+        <LayoutComponent pageTitle="Gift Search">
+          <SEOComponent title="Gift Search"/>
           <GiftsSearchComponent />
         </LayoutComponent>
       </SearchBarContext.Provider>
