@@ -67,19 +67,15 @@ class CarouselQuizComponent extends React.Component<CarouselQuizComponentProps, 
       <div className="flex flex-col items-center">
         <div className="flex flex-row justify-center">
           <div className="flex flex-row items-start flex-wrap justify-center">
-
-            <CarouselQuizElement image={(<StaticImage className="" alt="Personalized Potato Chips Bag" src="../images/grandmas-ruffles.png" width={400}/>)}
-              quizText="Grandma + Potato Chips"
-              answerText="Personalized Potato Chips Bag"
-              searchText="grandma potato chips" />
-            <CarouselQuizElement image={(<StaticImage className="" alt="Custom NFL Logo Phone Charger" src="../images/jen-nfl-leather.png" width={400}/>)}
-              quizText="Football + iPhone"
-              answerText="Custom NFL Logo Phone Charger"
-              searchText="football iphone" />
             <CarouselQuizElement image={(<StaticImage className="" alt="Photo Playing Cards" src="../images/three-family-cards.png" width={400}/>)}
               quizText="Family + Games"
               answerText="Photo Playing Cards"
               searchText="family games playing cards" />
+            <CarouselQuizElement image={(<StaticImage className="" alt="Personalized Golf Balls" src="../images/grandpas-favorite-birdie.png" width={400}/>)}
+              quizText="Golf + Bird Watching"
+              answerText="Personalized Golf Balls"
+              searchText="golf bird watching personalized" />
+
 
           </div>
 

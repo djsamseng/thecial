@@ -58,7 +58,6 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
             </div>
             <BestGiftAnimationComponent />
             <div className="border-t dark:border-gray-700 self-stretch mt-[120px] pb-10 px-3">
-              <CarouselQuizComponent2 />
             </div>
 
           </div>
