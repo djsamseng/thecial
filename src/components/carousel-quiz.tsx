@@ -98,31 +98,6 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
   }
 
   public render() {
-    const trumpCandle = {
-      item: {
-        "id": 6,
-        "url": "https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li3&tag=gatherbadger-20&linkId=2920bd2896ecbca9d8d103bdb3b8d076&language=en_US&ref_=as_li_ss_il",
-        "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
-        "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B08BFJH2Y1",
-        "img_amazon_orig": "<a href=\"https://www.amazon.com/Donald-Trump-Candle-Scented-Embossed/dp/B08BFJH2Y1?crid=BAUEUFCK88K&keywords=trump+candle&qid=1645744608&sprefix=trump+candle%2Caps%2C84&sr=8-3&linkCode=li3&tag=gatherbadger-20&linkId=2920bd2896ecbca9d8d103bdb3b8d076&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08BFJH2Y1&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B08BFJH2Y1\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
-        "desc": "Net Weight: Huge",
-        "title": "Donald Trump Candle",
-        "tags": [
-            "prank",
-            "box",
-            "joke",
-            "politics",
-            "donald",
-            "trump",
-            "funny",
-            "candle",
-            "huge",
-            "net",
-            "weight"
-        ]
-      },
-      queryMatches: ["coworker", "funny", "politics"]
-    }
     return (
       <div className="flex flex-row justify-center">
         <div className="flex flex-col items-center">
@@ -130,14 +105,6 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
             quizText="Golf + Bird Watching"
             answerText="Personalized Golf Balls"
             searchText="golf bird watching personalized" />
-          <CarouselQuizElement image={(
-              <div className="w-[340px] sm:w-[400px] mb-10 mt-[-24px] list-none">
-                <GiftItemComponent giftResult={trumpCandle} />
-              </div>
-            )}
-            quizText="Funny + Politics"
-            answerText="Donald Trump Candle"
-            searchText="funny politics" />
           <div className="flex flex-col items-center sm:items-end">
             <div className="flex flex-row space-x-4">
               <Link className="text-2xl mt-10 rounded-md p-1 px-2 bg-slate-600 text-white" to="/guide">More Examples</Link>
