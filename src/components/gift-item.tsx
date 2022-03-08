@@ -36,8 +36,8 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     }
     else if (item.img) {
       img = (
-        <div className="ml-5 mt-1 max-w-xs h-[300px] bg-white">
-          <img className="max-w-xs max-h-[300px]" src={item.img} alt={item.title}></img>
+        <div className="mt-1 max-w-[300px] sm:max-w-xs h-[300px] bg-white">
+          <img className="max-w-[300px] sm:max-w-xs max-h-[300px]" src={item.img} alt={item.title}></img>
         </div>
 
       )
@@ -49,7 +49,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
     }
     let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""
     return (
-      <li className="mt-5 w-[420px] h-[460px] border rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800" key={item.key}>
+      <li className="mt-5 w-[340px] sm:w-[420px] h-[480px] border rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800 overflow-hidden" key={item.id}>
         <a target="_blank" rel="noopener" href={item.url}>
           <p className="text-2xl">{item.title}</p>
           <div className="flex flex-row items-baseline">
@@ -58,14 +58,14 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
           </div>
           <p className="mt-1">{item.desc}</p>
         </a>
-        <div className="mt-2 overflow-hidden">
+        <div className="mt-2 overflow-hidden flex flex-row flex-wrap items-start">
           {
             giftResult.queryMatches.map(queryMatch => {
               if (queryMatch.length > 0) {
                 queryMatch = queryMatch[0].toUpperCase() + queryMatch.slice(1);
               }
               return (
-                <span className="mx-2 border-[1px] px-2 border-stone-200 rounded">{queryMatch}</span>
+                <div className="mx-2 border-[1px] mb-1 px-2 border-stone-200 rounded overflow-hidden">{queryMatch}</div>
               )
             })
           }
