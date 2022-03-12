@@ -27,7 +27,6 @@ type BlogPostState = {};
 class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
   constructor(props: BlogPostProps) {
     super(props);
-    console.log("PROPS:", props);
   }
 
   public render() {

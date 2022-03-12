@@ -1,18 +1,24 @@
 import React from "react";
 
 export type GiftResultItem = {
-  id: string|number;
+  id: number;
   title: string;
+  real_title: string;
   url: string;
   img: string;
   img_amazon_ad?: string;
   img_amazon_orig?: string;
   iframe?: string;
   desc?: string;
+  real_desc: string;
+  price: number;
+  score: number;
   tags: Array<string>;
 };
 export type GiftResult = {
   queryMatches: Array<string>;
+  titleMatches: Array<string>;
+  descMatches: Array<string>;
   item: GiftResultItem;
 }
 

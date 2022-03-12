@@ -45,7 +45,6 @@ class DarkModePanel extends React.Component<DarkModePanelProps, DarkModePanelSta
 
   private onToggleDarkTheme() {
     const newTheme = this.state.theme === "light" ? "dark" : "light";
-    console.log("Currently we think the theme is:", this.state.theme);
     window.__setPreferredTheme(newTheme);
     this.setState({
       theme: newTheme

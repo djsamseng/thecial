@@ -16,28 +16,79 @@ type GiftsSearchComponentState = {
 
 function getData(): Array<GiftResultItem> {
   const data = GiftsSourceJSON.data;
-
   return data;
 }
 
-function getTagToData(data) {
-  const tagToData = {};
+type TagToData = Record<string, {
+  tagMatches: Array<number>;
+  titleMatches: Array<number>;
+  descMatches: Array<number>;
+}>;
+function getTagToData(data: Array<GiftResultItem>): TagToData  {
+  const tagToData: TagToData = {};
   for (const item of data) {
-    for (const tag of item.tags) {
+    if (typeof item.id !== "number") {
+      console.error("NOT NUMBER!", item.id);
+    }
+    for (let tag of item.tags) {
+      tag = tag.toLowerCase();
       if (!tagToData[tag]) {
-        tagToData[tag] = []
+        tagToData[tag] = {
+          tagMatches: [],
+          titleMatches: [],
+          descMatches: [],
+        }
       }
-      tagToData[tag].push(item);
+      tagToData[tag].tagMatches.push(item.id);
+    }
+    for (let titleWord of item.title.split(" ")) {
+      titleWord = titleWord.toLowerCase();
+      if (!tagToData[titleWord]) {
+        tagToData[titleWord] = {
+          tagMatches: [],
+          titleMatches: [],
+          descMatches: [],
+        }
+      }
+      tagToData[titleWord].titleMatches.push(item.id);
+    }
+    for (let realTitleWord of item.real_title.split(" ")) {
+      realTitleWord = realTitleWord.toLowerCase();
+      if (!tagToData[realTitleWord]) {
+        tagToData[realTitleWord] = {
+          tagMatches: [],
+          titleMatches: [],
+          descMatches: [],
+        }
+      }
+      tagToData[realTitleWord].titleMatches.push(item.id);
+    }
+    for (let realDescWord of item.real_desc.split(" ")) {
+      realDescWord = realDescWord.toLowerCase();
+      if (!tagToData[realDescWord]) {
+        tagToData[realDescWord] = {
+          tagMatches: [],
+          titleMatches: [],
+          descMatches: [],
+        }
+      }
+      tagToData[realDescWord].descMatches.push(item.id);
     }
   }
   return tagToData;
 }
 
 const GIFT_RESULTS = getData();
+const ID_TO_GIFT_RESULT = Object.values(GIFT_RESULTS).reduce((map, g) => {
+  map[g.id] = g;
+  return map;
+}, {} as Record<number, GiftResultItem>)
 const TAG_TO_GIFT_RESULT = getTagToData(GIFT_RESULTS);
 const ALL_GIFT_RESULTS: Array<GiftResult> = GIFT_RESULTS.map(item => {
   return {
     queryMatches: [],
+    titleMatches: [],
+    descMatches: [],
     item: item,
   };
 });
@@ -108,14 +159,41 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
         }
         for (const word of wordsAry) {
           if (TAG_TO_GIFT_RESULT[word]) {
-            TAG_TO_GIFT_RESULT[word].forEach(item => {
+            TAG_TO_GIFT_RESULT[word].tagMatches.forEach(itemId => {
+              const item = ID_TO_GIFT_RESULT[itemId]
               if (!matchesObj[item.id]) {
                 matchesObj[item.id] = {
                   queryMatches: [],
+                  titleMatches: [],
+                  descMatches: [],
                   item: item,
                 }
               }
               matchesObj[item.id].queryMatches.push(word);
+            });
+            TAG_TO_GIFT_RESULT[word].titleMatches.forEach(itemId => {
+              const item = ID_TO_GIFT_RESULT[itemId]
+              if (!matchesObj[item.id]) {
+                matchesObj[item.id] = {
+                  queryMatches: [],
+                  titleMatches: [],
+                  descMatches: [],
+                  item: item,
+                }
+              }
+              matchesObj[item.id].titleMatches.push(word);
+            });
+            TAG_TO_GIFT_RESULT[word].descMatches.forEach(itemId => {
+              const item = ID_TO_GIFT_RESULT[itemId]
+              if (!matchesObj[item.id]) {
+                matchesObj[item.id] = {
+                  queryMatches: [],
+                  titleMatches: [],
+                  descMatches: [],
+                  item: item,
+                }
+              }
+              matchesObj[item.id].descMatches.push(word);
             });
           }
         }
@@ -123,13 +201,12 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
       }
     }
     matches.sort((a, b) => {
-      if (a.queryMatches.length < b.queryMatches.length) {
-        return 1;
+      const matchScore = (r: GiftResult) => {
+        return r.queryMatches.length + 0.8 * r.titleMatches.length + 0.5 * r.item.score + 0.001 * r.descMatches.length
       }
-      else if (a.queryMatches.length > b.queryMatches.length) {
-        return -1;
-      }
-      return 0;
+      const aScore = matchScore(a);
+      const bScore = matchScore(b);
+      return bScore - aScore;
     });
     return matches.slice(0, this.state.maxResults);
   }
@@ -138,7 +215,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     if (!window || !document || !document.documentElement) {
       return;
     }
-    if (window.innerHeight + document.documentElement.scrollTop + 20 >= document.scrollingElement.scrollHeight) {
+    if (window.innerHeight + document.documentElement.scrollTop + 50 >= document.scrollingElement.scrollHeight) {
       this.setState({
         maxResults: this.state.maxResults + 8,
       })
@@ -157,7 +234,6 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
   constructor(props: GiftsIndexPageProps) {
     super(props);
     let searchText = "";
-    console.log("Created with props:", this.props);
 
     if (this.props.location.state && (this.props.location.state as any).searchText) {
       searchText = (this.props.location.state as any).searchText;

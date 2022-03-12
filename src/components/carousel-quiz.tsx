@@ -101,6 +101,33 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
   }
 
   public render() {
+    const hideAPoo: GiftResult = {
+      item: {
+        "id": 16,
+        "url": "https://www.amazon.com/Prank-Pack-Hide-Poo-Prank/dp/B07W4FLX96?crid=38JY0XNXTSH7W&keywords=prank+box&qid=1646422154&sprefix=prank+box%2Caps%2C75&sr=8-8&linkCode=li3&tag=gatherbadger-20&linkId=a1574d77ea50606ab8a3a6776be3bfdb&language=en_US&ref_=as_li_ss_il",
+        "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07W4FLX96&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+        "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B07W4FLX96",
+        "img_amazon_orig": "<a href=\"https://www.amazon.com/Prank-Pack-Hide-Poo-Prank/dp/B07W4FLX96?crid=38JY0XNXTSH7W&keywords=prank+box&qid=1646422154&sprefix=prank+box%2Caps%2C75&sr=8-8&linkCode=li3&tag=gatherbadger-20&linkId=a1574d77ea50606ab8a3a6776be3bfdb&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07W4FLX96&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B07W4FLX96\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
+        "desc": "",
+        "price": 8.99,
+        "title": "Dog Prank Gift Box",
+        "real_title": "        Prank Pack, Hide A Poo Prank Gift Box, Wrap Your Real Present in a Funny Authentic Prank-O Gag Present Box | Novelty Gifting Box for Pranksters       ",
+        "real_desc": "",
+        "score": 7,
+        "tags": [
+            "dog",
+            "prank",
+            "funny",
+            "gift",
+            "box",
+            "puppy",
+            "pet"
+        ]
+      },
+      queryMatches: ["prank", "gift", "box"],
+      titleMatches: [],
+      descMatches: [],
+    };
     const harryPotterWand: GiftResult = {
       item: {
         "id": 18,
@@ -109,7 +136,11 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
         "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B00FXMDRZK",
         "img_amazon_orig": "<a href=\"https://www.amazon.com/HARRY-POTTER-Remote-Control-Wand/dp/B00FXMDRZK?crid=1UYG5DZ1VJKPT&keywords=wand+tv+remote&qid=1646422369&sprefix=wand+tv+remote%2Caps%2C70&sr=8-1&linkCode=li3&tag=gatherbadger-20&linkId=585a444695c834b7298577f608486e70&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00FXMDRZK&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B00FXMDRZK\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
         "desc": "",
+        "price": 12.95,
         "title": "Harry Potter TV Remote Control Wand",
+        "real_title": "        The Harry Potter Remote Control Wand       ",
+        "real_desc": "",
+        "score": 3,
         "tags": [
             "harry",
             "potter",
@@ -121,7 +152,9 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
             "magician"
         ]
       },
-      queryMatches: ["TV", "harry", "potter"]
+      queryMatches: ["TV", "harry", "potter"],
+      titleMatches: [],
+      descMatches: [],
 
     }
     const tennisSpreader: GiftResult = {
@@ -132,7 +165,11 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
         "img_amazon_ad": "https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B0043TAKDG",
         "img_amazon_orig": "<a href=\"https://www.amazon.com/Wine-Things-00730-Tennis-Spreader/dp/B0043TAKDG?keywords=tennis+cheese+spreader&qid=1646422681&sprefix=tennis+cheese%2Caps%2C74&sr=8-1&linkCode=li3&tag=gatherbadger-20&linkId=bfc54f0de10be08ef94693640f5add43&language=en_US&ref_=as_li_ss_il\" target=\"_blank\"><img border=\"0\" src=\"//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0043TAKDG&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US\" ></a><img src=\"https://ir-na.amazon-adsystem.com/e/ir?t=gatherbadger-20&language=en_US&l=li3&o=1&a=B0043TAKDG\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" style=\"border:none !important; margin:0px !important;\" />",
         "desc": "",
+        "price": 14.99,
         "title": "Tennis Cheese Spreader",
+        "real_title": "        Wine Things Tennis Racket Cheese Spreader, 5 1/2\" L, Sliver       ",
+        "real_desc": "       \n                    With elegant and creative design, give the perfect accent to any table. They are perfect for gift baskets or simply for your own personal use! Provide decorative theme and variety to your table. We have so many patterns for you to choose from, come to pick them for home entertaining! Useful for spreads, dips, and soft cheeses. Both charming and practical.           ",
+        "score": 1,
         "tags": [
             "tennis",
             "cheese",
@@ -142,12 +179,22 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
             "crackers"
         ]
       },
-      queryMatches: ["tennis", "cheese"]
+      queryMatches: ["tennis", "cheese"],
+      titleMatches: [],
+      descMatches: [],
     };
     return (
       <div className="flex flex-col items-center">
         <div className="flex flex-row justify-center">
           <div className="flex flex-row items-start flex-wrap justify-center">
+            <CarouselQuizElement image={(
+                <div className="w-[340px] sm:w-[420px] mb-10 mt-[-24px] list-none">
+                  <GiftItemComponent giftResult={hideAPoo}/>
+                </div>
+              )}
+              quizText="Dog + Prank"
+              answerText="Dog Prank Gift Box"
+              searchText="dog prank gift box" />
             <CarouselQuizElement image={(
                 <div className="w-[340px] sm:w-[420px] mb-10 mt-[-24px] list-none">
                   <GiftItemComponent giftResult={harryPotterWand}/>
@@ -164,6 +211,7 @@ export class CarouselQuizComponent2 extends React.Component<CarouselQuizComponen
               quizText="Tennis + Cheese"
               answerText="Tennis Cheese Spreader"
               searchText="tennis cheese" />
+
 
           </div>
         </div>
