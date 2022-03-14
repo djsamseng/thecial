@@ -4,10 +4,7 @@ import { RouteComponentProps } from "@reach/router";
 
 import LayoutComponent from "../../components/layout";
 import SEOComponent from "../../components/seo-component";
-import GiftsSearchComponent from "../../components/static-gifts";
-import SupaGiftsComponent from "../../components/supa-gifts";
-
-const USE_STATIC_GIFTS = true;
+import GiftsComponent from "../../components/gifts-component";
 
 interface GiftsIndexPageProps extends RouteComponentProps {
 };
@@ -23,7 +20,7 @@ class GiftsIndexPage extends React.Component<GiftsIndexPageProps,GiftsIndexPageS
     return (
       <LayoutComponent pageTitle="Gift Search" location={this.props.location}>
         <SEOComponent title="Gift Search"/>
-        { USE_STATIC_GIFTS ? (<GiftsSearchComponent />) : (<SupaGiftsComponent />)}
+        <GiftsComponent />
       </LayoutComponent>
     )
   }

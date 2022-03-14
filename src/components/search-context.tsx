@@ -76,6 +76,14 @@ class SearchBarContextComponent extends React.Component<SearchBarContextComponen
     }
     return "";
   }
+
+  private loadSearchFromLocation() {
+    const searchText = this.getSearchTextFromLocation();
+    this.setState({
+      searchText,
+      pendingSearchText: searchText,
+    });
+  }
 }
 
 export default SearchBarContextComponent;

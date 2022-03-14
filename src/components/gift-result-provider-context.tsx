@@ -8,7 +8,7 @@ import { SearchBarContext } from "./search-context";
 
 export const GiftResultProviderContext = React.createContext({
   searchMatches: [],
-  loadMore: () => {},
+  loadMore: (totalCount: number) => {},
   submitSearch: () => {},
   hasMore: true,
   isSearching: false,
@@ -26,6 +26,7 @@ type GiftResultsProviderComponentState = {
 }
 
 class GiftResultsProviderComponent extends React.Component<GiftResultsProviderComponentProps, GiftResultsProviderComponentState> {
+  static contextType = SearchBarContext;
   constructor(props: GiftResultsProviderComponentProps) {
     super(props);
     this.state = {
@@ -33,7 +34,11 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
       isSearching: false,
       hasMore: true,
     };
-    this.getMatches("");
+
+  }
+
+  public componentDidMount(): void {
+    this.getMatches(this.context.searchText);
   }
 
   public render() {
@@ -46,10 +51,10 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
       });
       this.getMatches("");
     }
-    const { pendingSearchText, submitSearch } = useContext(SearchBarContext);
+    const { searchText, pendingSearchText, submitSearch } = this.context
     const giftResultProviderContext = {
       searchMatches: this.state.searchMatches,
-      loadMore: this.loadMore.bind(this),
+      loadMore: this.loadMore.bind(this, searchText),
       hasMore: this.state.hasMore,
       isSearching: this.state.isSearching,
       submitSearch: this.submitSearch.bind(this, pendingSearchText, submitSearch),
@@ -75,6 +80,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     if (this.props.location && this.props.location.pathname.indexOf(withPrefix("/gifts")) >= 0) {
       this.setState({
         isSearching: true,
+        hasMore: false,
       });
       console.log("Will search:", searchText);
       const { matches, hasMore } = await GiftProviderInstance.getGiftsForSearch(searchText);
@@ -86,8 +92,17 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     }
   }
 
-  private async loadMore() {
-
+  private async loadMore(searchText: string, totalCount: number) {
+    this.setState({
+      isSearching: true,
+      hasMore: false,
+    });
+    const { matches, hasMore } = await GiftProviderInstance.getGiftsForSearch(searchText, totalCount);
+    this.setState({
+      searchMatches: matches,
+      hasMore,
+      isSearching: false,
+    });
   }
 }
 
