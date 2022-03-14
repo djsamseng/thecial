@@ -1,8 +1,9 @@
 import React from "react";
 
 export const SearchBarContext = React.createContext({
+  pendingSearchText: "",
   searchText: "",
-  setSearchText: (val: string) => {},
+  setPendingSearchText: (val: string) => {},
   submitSearch: () => {},
 });
 
@@ -18,12 +19,12 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     return (
       <div className="flex-1 flex flex-row items-center shrink-0 min-w-fit px-1">
         <SearchBarContext.Consumer>
-          {({ searchText, setSearchText, submitSearch }) => (
+          {({ pendingSearchText, setPendingSearchText, submitSearch }) => (
             <form className="flex-1 flex flex-row text-slate-900 border-slate-500 border-2 rounded-lg dark:border-slate-700" onSubmit={this.onSearchSubmit.bind(this, submitSearch)}>
               <input className="flex-1 pl-1 text-black dark:text-white bg-stone-50 hover:bg-white dark:bg-slate-500 rounded-l-lg"
                 type="text"
-                onChange={(evt) => setSearchText(evt.target.value)}
-                value={searchText}
+                onChange={(evt) => setPendingSearchText(evt.target.value)}
+                value={pendingSearchText}
                 aria-label="Search input"
                 tabIndex={0}
                 placeholder="Search Gifts"
