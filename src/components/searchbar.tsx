@@ -1,11 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
-export const SearchBarContext = React.createContext({
-  pendingSearchText: "",
-  searchText: "",
-  setPendingSearchText: (val: string) => {},
-  submitSearch: () => {},
-});
+import { SearchBarContext } from "./search-context";
+import { GiftResultProviderContext } from "./gift-result-provider-context";
 
 type SearchBarProps = {};
 type SearchBarState = {
@@ -16,10 +12,11 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     this.state = {};
   }
   public render() {
+    const { submitSearch } = useContext(GiftResultProviderContext);
     return (
       <div className="flex-1 flex flex-row items-center shrink-0 min-w-fit px-1">
         <SearchBarContext.Consumer>
-          {({ pendingSearchText, setPendingSearchText, submitSearch }) => (
+          {({ pendingSearchText, setPendingSearchText }) => (
             <form className="flex-1 flex flex-row text-slate-900 border-slate-500 border-2 rounded-lg dark:border-slate-700" onSubmit={this.onSearchSubmit.bind(this, submitSearch)}>
               <input className="flex-1 pl-1 text-black dark:text-white bg-stone-50 hover:bg-white dark:bg-slate-500 rounded-l-lg"
                 type="text"

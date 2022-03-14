@@ -1,13 +1,36 @@
 import React, { createContext, useContext } from "react";
 
-import SearchBar, { SearchBarContext } from "./searchbar";
-import GiftItemComponent, { GiftResultItem, GiftResult } from "./gift-item";
+import { SearchBarContext } from "./search-context";
+import GiftItemComponent from "./gift-item";
+
 import GiftsSourceJSON from "../../data/gifts/gifts-source.json";
 
 type GiftsSearchComponentProps = {};
 type GiftsSearchComponentState = {
   maxResults: number;
 }
+type GiftResultItem = {
+  id: number;
+  title: string;
+  img: string;
+  real_title: string;
+  url: string;
+  img_amazon_ad?: string;
+  img_amazon_orig?: string;
+  iframe?: string;
+  desc?: string;
+  real_desc: string;
+  price: number;
+  score: number;
+  tags: Array<string>;
+};
+type GiftResult = {
+  queryMatches: Array<string>;
+  titleMatches: Array<string>;
+  descMatches: Array<string>;
+  item: GiftResultItem;
+}
+
 
 function getData(): Array<GiftResultItem> {
   const data = GiftsSourceJSON.data;
@@ -126,8 +149,18 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
         <ul className="flex flex-row flex-wrap items-start justify-center space-x-2">
           {
             matches.map(giftResult => {
+              const item = giftResult.item;
+              const newItem = {
+                id: item.id,
+                title: item.title,
+                img: item.img,
+                score_sum: 1,
+                url: item.url,
+                custom_desc: item.desc || "",
+                word_matches: giftResult.queryMatches,
+              }
               return (
-                <GiftItemComponent giftResult={giftResult} />
+                <GiftItemComponent gift={newItem} />
               );
             })
           }

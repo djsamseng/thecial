@@ -1,29 +1,17 @@
 import React from "react";
 
-export type GiftResultItem = {
+export type SupabaseSearchResult = {
   id: number;
   title: string;
-  real_title: string;
-  url: string;
   img: string;
-  img_amazon_ad?: string;
-  img_amazon_orig?: string;
-  iframe?: string;
-  desc?: string;
-  real_desc: string;
-  price: number;
-  score: number;
-  tags: Array<string>;
+  score_sum: number;
+  url: string;
+  custom_desc: string;
+  word_matches: Array<string>;
 };
-export type GiftResult = {
-  queryMatches: Array<string>;
-  titleMatches: Array<string>;
-  descMatches: Array<string>;
-  item: GiftResultItem;
-}
 
 type GiftItemComponentProps = {
-  giftResult: GiftResult;
+  gift: SupabaseSearchResult,
 };
 type GiftItemComponentState = {};
 class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItemComponentState> {
@@ -32,8 +20,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
   }
 
   public render() {
-    const giftResult = this.props.giftResult;
-    const item = giftResult.item;
+    const item = this.props.gift;
     let img = null;
     let iframe = null;
 
@@ -48,12 +35,6 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
 
       )
     }
-    else if (item.iframe) {
-      iframe = (
-        <iframe className="ml-5 mt-1 w-[120px] h-[240px]" scrolling="no" src={item.iframe}/>
-      )
-    }
-    let queryMatches = giftResult.queryMatches.length > 0 ? giftResult.queryMatches.join(" ") : ""
     return (
       <li className="mt-5 w-[340px] sm:w-[420px] h-[480px] border rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800 overflow-hidden" key={item.id}>
         <a target="_blank" rel="noopener" href={item.url}>
@@ -62,11 +43,11 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
             {img}
             {iframe}
           </div>
-          <p className="mt-1">{item.desc}</p>
+          <p className="mt-1">{item.custom_desc}</p>
         </a>
         <div className="mt-2 overflow-hidden flex flex-row flex-wrap items-start">
           {
-            giftResult.queryMatches.map(queryMatch => {
+            item.word_matches.map(queryMatch => {
               if (queryMatch.length > 0) {
                 queryMatch = queryMatch[0].toUpperCase() + queryMatch.slice(1);
               }

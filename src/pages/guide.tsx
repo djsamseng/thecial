@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "gatsby";
+import { RouteComponentProps } from "@reach/router";
 
 import LayoutComponent from "../components/layout";
 import SEOComponent from "../components/seo-component";
 import HeadlineWithExamplesComponent, { ROTATION } from "../components/headline-with-examples";
+import SearchBarContextComponent from "../components/search-context";
 
-type GuidePageProps = {};
+interface GuidePageProps extends RouteComponentProps {
+
+};
 type GuidePageState = {};
 
 class GuidePage extends React.Component<GuidePageProps, GuidePageState> {
@@ -64,7 +67,7 @@ class GuidePage extends React.Component<GuidePageProps, GuidePageState> {
       }
     ]
     return (
-      <LayoutComponent pageTitle="Guide">
+      <LayoutComponent pageTitle="Guide" location={this.props.location}>
         <SEOComponent title="Guide" />
         <div className="px-3">
           <h2>Step 1: What is unique to them?</h2>
@@ -80,7 +83,6 @@ class GuidePage extends React.Component<GuidePageProps, GuidePageState> {
             </div>
           </div>
         </div>
-
       </LayoutComponent>
     )
   }

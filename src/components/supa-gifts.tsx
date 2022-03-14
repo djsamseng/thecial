@@ -1,13 +1,13 @@
-import React, { createContext, useContext } from "react";
-import { Router, RouteComponentProps } from "@reach/router";
-import { graphql, navigate } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useContext } from "react";
 
-import SearchBar, { SearchBarContext } from "./searchbar";
-import SupaGiftItemComponent, { SupabaseSearchResult } from "./supa-gift-item";
+import { SearchBarContext } from "./search-context";
+import { GiftResultProviderContext } from "./gift-result-provider-context";
+import GiftItemComponent from "./gift-item";
+import GiftProviderInstance, { GiftResult } from "../providers/gift-provider";
 
 type SupaGiftsComponentProps = {};
 type SupaGiftsComponentState = {
+  matches: Array<GiftResult>;
   maxResults: number;
 }
 
@@ -15,6 +15,7 @@ class SupaGiftsComponent extends React.Component<SupaGiftsComponentProps, SupaGi
   constructor(props: SupaGiftsComponentProps) {
     super(props);
     this.state = {
+      matches: [],
       maxResults: 8,
     }
   }
@@ -35,8 +36,9 @@ class SupaGiftsComponent extends React.Component<SupaGiftsComponentProps, SupaGi
 
 
   public render() {
-    const { searchText, setSearchText, submitSearch } = useContext(SearchBarContext);
-    const matches = this.getMatches(searchText.toLowerCase());
+    const { searchText } = useContext(SearchBarContext);
+    const { searchMatches, loadMore, hasMore } = useContext(GiftResultProviderContext);
+    const matches = searchMatches;
     if (matches.length == 0) {
       return (
         <div className="pt-5 pb-20 px-3 items-center">
@@ -50,19 +52,13 @@ class SupaGiftsComponent extends React.Component<SupaGiftsComponentProps, SupaGi
           {
             matches.map(giftResult => {
               return (
-                <SupaGiftItemComponent giftResult={giftResult} />
+                <GiftItemComponent gift={giftResult} />
               );
             })
           }
         </ul>
       </div>
     )
-  }
-
-  private getMatches(
-    words?: string,
-  ): Array<SupabaseSearchResult> {
-    return [];
   }
 
   private loadMoreOnScroll() {

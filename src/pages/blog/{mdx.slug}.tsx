@@ -1,13 +1,15 @@
+
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
+import { RouteComponentProps } from "@reach/router";
 // import { MDXRenderer } from "gatsby-plugin-mdx";
 import LayoutComponent from "../../components/layout";
 import SEOComponent from "../../components/seo-component";
 
 
-type BlogPostProps = {
+interface BlogPostProps extends RouteComponentProps {
   data: {
     mdx: {
       frontmatter: {
@@ -32,7 +34,7 @@ class BlogPost extends React.Component<BlogPostProps, BlogPostState> {
   public render() {
     const image = getImage(this.props.data.mdx.frontmatter.hero_image);
     return (
-      <LayoutComponent pageTitle={this.props.data.mdx.frontmatter.title}>
+      <LayoutComponent pageTitle={this.props.data.mdx.frontmatter.title} location={this.props.location}>
         <SEOComponent title={this.props.data.mdx.frontmatter.title} />
         <p>{this.props.data.mdx.frontmatter.date}</p>
         <a href={this.props.data.mdx.frontmatter.hero_credit_link}>
