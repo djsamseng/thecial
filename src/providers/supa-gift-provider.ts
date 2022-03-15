@@ -1,5 +1,6 @@
 
 import { createClient } from "@supabase/supabase-js";
+import { stemmer } from "stemmer";
 
 import { BaseGiftProvider, GiftResult } from "./base-gift-provider";
 
@@ -27,6 +28,7 @@ function sanitizeQueryWord(word: string) {
   word = word.replace(/\W/g, '');
   word = word.trimEnd();
   word = word.trimStart();
+  word = stemmer(word);
   return word;
 }
 
@@ -71,15 +73,16 @@ async function getGiftsSupabase(start: number, limit: number): Promise<Array<Sup
 }
 
 async function searchGiftsSupabase(query: string, start: number, limit: number): Promise<Array<SupabaseSearchResult>> {
-  const words = query.split(" ")
+  const words = query.split(" ");
+  const stemWords = words
     .map(s => sanitizeQueryWord(s))
     .filter(s => s.length > 0);
-  if (words.length === 0) {
+  if (stemWords.length === 0) {
     return await getGiftsSupabase(start, limit);
   }
-  console.log("Hitting supabase:", words, start, limit);
+  console.log("Hitting supabase:", stemWords, start, limit);
   const {data, error, status} = await supabase.rpc("search_by_words", {
-    words: words,
+    words: stemWords,
     range_offset: start,
     range_limit: limit,
   }) as {
@@ -88,6 +91,16 @@ async function searchGiftsSupabase(query: string, start: number, limit: number):
     status: number;
   }
   const searchResults = data;
+  const stemToWord = words.reduce((map, word) => {
+    const stem = sanitizeQueryWord(word);
+    map[stem] = word;
+    return map;
+  }, {});
+  searchResults.forEach(res => {
+    res.word_matches = res.word_matches.map(stem => {
+      return stemToWord[stem];
+    });
+  });
 
   if (error && status !== 406) {
     console.error("Supabase searchGifts Error:", error, status);
