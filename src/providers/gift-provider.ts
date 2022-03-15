@@ -1,6 +1,7 @@
 
-import StaticGiftProviderInstance from "./static-gift-provider";
 
+import StaticGiftProviderInstance from "./static-gift-provider";
+import SupaGiftProviderInstance from "./supa-gift-provider";
 import { GiftResult } from "./base-gift-provider";
 
 
@@ -14,7 +15,7 @@ class GiftProvider {
     matches: Array<GiftResult>;
     totalResults: number;
   }> {
-    const res = await StaticGiftProviderInstance.getMatches(searchText, totalCount);
+    const res = await SupaGiftProviderInstance.getMatches(searchText, totalCount);
     return res;
   }
 }
