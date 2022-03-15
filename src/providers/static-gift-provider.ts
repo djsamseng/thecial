@@ -2,7 +2,7 @@
 
 import GiftsSourceJSON from "../../data/gifts/gifts-source.json";
 
-import type { GiftResult } from "./gift-provider";
+import { BaseGiftProvider, GiftResult } from "./base-gift-provider";
 
 type GiftResultItem = {
   id: number;
@@ -109,7 +109,10 @@ const ALL_GIFT_RESULTS: Array<GiftResultMatches> = GIFT_RESULTS.map(item => {
 function getMatches(
   words: string,
   maxResults: number,
-): Array<GiftResult> {
+): {
+  matches: Array<GiftResult>;
+  totalResults: number;
+}  {
   let matches = ALL_GIFT_RESULTS;
   if (words && words.length > 0) {
     const matchesObj:Record<string, GiftResultMatches> = {};
@@ -174,8 +177,9 @@ function getMatches(
     const bScore = matchScore(b);
     return bScore - aScore;
   });
+  const totalResults = matches.length;
   matches = matches.slice(0, maxResults);
-  return matches.map(m => {
+  const matchResults = matches.map(m => {
     const item = m.item;
     return {
       id: item.id,
@@ -187,8 +191,20 @@ function getMatches(
       word_matches: m.queryMatches,
     };
   });
+  return {
+    matches: matchResults,
+    totalResults,
+  }
 }
 
-export default {
-  getMatches,
+class StaticGiftProvider extends BaseGiftProvider {
+  constructor() {
+    super();
+  }
+  public async getMatches(searchText:string, totalCount: number) {
+    return Promise.resolve(getMatches(searchText, totalCount));
+  }
 }
+
+const s_staticGiftProvider = new StaticGiftProvider();
+export default s_staticGiftProvider;

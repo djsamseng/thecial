@@ -3,14 +3,15 @@ import { RouteComponentProps } from "@reach/router";
 
 import { navigate, withPrefix } from "gatsby";
 
-import GiftProviderInstance, { GiftResult } from "../providers/gift-provider";
+import GiftProviderInstance from "../providers/gift-provider";
+import { GiftResult } from "../providers/base-gift-provider";
 import { SearchBarContext } from "./search-context";
 
 export const GiftResultProviderContext = React.createContext({
   searchMatches: [],
   loadMore: (totalCount: number) => {},
   submitSearch: () => {},
-  hasMore: true,
+  totalResults: 0,
   isSearching: false,
 });
 
@@ -22,7 +23,7 @@ type GiftResultsProviderComponentProps = {
 type GiftResultsProviderComponentState = {
   searchMatches: Array<GiftResult>;
   isSearching: boolean;
-  hasMore: boolean;
+  totalResults: number;
 }
 
 class GiftResultsProviderComponent extends React.Component<GiftResultsProviderComponentProps, GiftResultsProviderComponentState> {
@@ -32,7 +33,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     this.state = {
       searchMatches: [],
       isSearching: false,
-      hasMore: true,
+      totalResults: 0,
     };
 
   }
@@ -43,7 +44,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
       this.setState({
         searchMatches: [],
         isSearching: false,
-        hasMore: true,
+        totalResults: 0,
       });
       this.getMatches("");
     }
@@ -51,7 +52,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     const giftResultProviderContext = {
       searchMatches: this.state.searchMatches,
       loadMore: this.loadMore.bind(this, searchText),
-      hasMore: this.state.hasMore,
+      totalResults: this.state.totalResults,
       isSearching: this.state.isSearching,
       submitSearch: this.submitSearch.bind(this, pendingSearchText, submitSearch),
     };
@@ -94,13 +95,13 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     if (this.props.location && this.props.location.pathname.indexOf(withPrefix("/gifts")) >= 0) {
       this.setState({
         isSearching: true,
-        hasMore: false,
+        totalResults: 0,
       });
       console.log("Will search:", searchText);
-      const { matches, hasMore } = await GiftProviderInstance.getGiftsForSearch(searchText);
+      const { matches, totalResults } = await GiftProviderInstance.getGiftsForSearch(searchText);
       this.setState({
         searchMatches: matches,
-        hasMore,
+        totalResults,
         isSearching: false,
       });
     }
@@ -109,12 +110,12 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
   private async loadMore(searchText: string, totalCount: number) {
     this.setState({
       isSearching: true,
-      hasMore: false,
+      totalResults: 0,
     });
-    const { matches, hasMore } = await GiftProviderInstance.getGiftsForSearch(searchText, totalCount);
+    const { matches, totalResults } = await GiftProviderInstance.getGiftsForSearch(searchText, totalCount);
     this.setState({
       searchMatches: matches,
-      hasMore,
+      totalResults,
       isSearching: false,
     });
   }

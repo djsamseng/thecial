@@ -1,16 +1,9 @@
 
-import StaticGiftProvider from "./static-gift-provider";
+import StaticGiftProviderInstance from "./static-gift-provider";
 
-type SupabaseSearchResult = {
-  id: number;
-  title: string;
-  img: string;
-  score_sum: number;
-  url: string;
-  custom_desc: string;
-  word_matches: Array<string>;
-};
-export type GiftResult = SupabaseSearchResult;
+import { GiftResult } from "./base-gift-provider";
+
+
 
 class GiftProvider {
   constructor() {
@@ -19,13 +12,10 @@ class GiftProvider {
 
   public async getGiftsForSearch(searchText: string, totalCount: number = 8): Promise<{
     matches: Array<GiftResult>;
-    hasMore: boolean;
+    totalResults: number;
   }> {
-    const matches = StaticGiftProvider.getMatches(searchText, totalCount);
-    return Promise.resolve({
-      matches: matches,
-      hasMore: false,
-    });
+    const res = await StaticGiftProviderInstance.getMatches(searchText, totalCount);
+    return res;
   }
 }
 

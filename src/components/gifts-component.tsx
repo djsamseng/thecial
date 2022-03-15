@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import GiftItemComponent from "./gift-item";
 import { GiftResultProviderContext } from "./gift-result-provider-context";
-import { GiftResult } from "../providers/gift-provider";
+import { GiftResult } from "../providers/base-gift-provider";
 
 
 
@@ -36,7 +36,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
 
 
   public render() {
-    const { searchMatches, loadMore } = this.context;
+    const { searchMatches, totalResults } = this.context as React.ContextType<typeof GiftResultProviderContext>;
     const matches = searchMatches as Array<GiftResult>;
     if (matches.length == 0) {
       return (
@@ -47,6 +47,10 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
     }
     return (
       <div className="pt-5 pb-20 px-3 items-center">
+        <div className="flex flex-col items-end mx-14">
+          <p className="">Showing {matches.length} of {totalResults}</p>
+        </div>
+
         <ul className="flex flex-row flex-wrap items-start justify-center space-x-2">
           {
             matches.map(giftResult => {
@@ -56,8 +60,25 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
             })
           }
         </ul>
+        { matches.length < totalResults ? (
+          <div className="flex flex-col items-center mx-14">
+            <button type="submit" onClick={this.onLoadMore.bind(this)}>{ matches.length < totalResults ? ("Load More") : ("") }</button>
+          </div>
+        ): (<div></div>)}
+
       </div>
     )
+  }
+
+  private onLoadMore() {
+    const { loadMore, isSearching } = this.context as React.ContextType<typeof GiftResultProviderContext>;
+    if (!isSearching) {
+      loadMore(this.state.maxResults + 8);
+      this.setState({
+        maxResults: this.state.maxResults + 8,
+      });
+    }
+
   }
 
   private loadMoreOnScroll() {
@@ -65,14 +86,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
       return;
     }
     if (window.innerHeight + document.documentElement.scrollTop + 50 >= document.scrollingElement.scrollHeight) {
-      const { loadMore, isSearching } = this.context;
-      if (!isSearching) {
-        loadMore(this.state.maxResults + 8);
-        this.setState({
-          maxResults: this.state.maxResults + 8,
-        });
-      }
-
+      this.onLoadMore();
     }
   }
 }
