@@ -3,8 +3,11 @@ import { createClient } from "@supabase/supabase-js";
 
 import { BaseGiftProvider, GiftResult } from "./base-gift-provider";
 
-const supabaseUrl = "http://localhost:54321";
-const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs";
+// const supabaseUrl = "http://localhost:54321";
+// const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs";
+const supabaseUrl = "https://fbzpfjeadselmgdvgitu.supabase.co";
+const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZienBmamVhZHNlbG1nZHZnaXR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDcyMDk0MDUsImV4cCI6MTk2Mjc4NTQwNX0.cQ6AYTxIpp48k276gyY5A1at_LAjqWURsUJzmryTTdc";
+
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 type SupabaseSearchResult = {
