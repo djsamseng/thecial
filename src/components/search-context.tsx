@@ -7,7 +7,7 @@ export const SearchBarContext = React.createContext({
   pendingSearchText: "",
   searchText: "",
   setPendingSearchText: (val: string) => {},
-  submitSearch: (val?: string) => {},
+  submitSearch: (override?: string, addToHistory?: boolean) => {},
 });
 
 
@@ -54,18 +54,28 @@ class SearchBarContextComponent extends React.Component<SearchBarContextComponen
     )
   }
 
-  private submitSearch(override?: string) {
+
+  private submitSearch(override?: string, addToHistory: boolean = true) {
     const searchText = override ? override : this.state.pendingSearchText;
-    const newUrl = "/gifts?search=" + encodeURIComponent(searchText.replace(" ", "+"));
+    const newUrl = this.getNewUrl(searchText);
     if (this.props.location && this.props.location.pathname.indexOf(withPrefix("/gifts")) >= 0) {
-      window.history.pushState("", "", newUrl);
+      if (addToHistory) {
+        window.history.pushState("", "", newUrl);
+      }
+
       this.setState({
+        pendingSearchText: searchText,
         searchText,
       });
     }
     else {
       navigate(newUrl);
     }
+  }
+
+  private getNewUrl(searchText: string) {
+    const newUrl = "/gifts/?search=" + encodeURIComponent(searchText.replace(" ", "+"));
+    return newUrl;
   }
 
   private getSearchTextFromLocation(): string {
@@ -77,13 +87,7 @@ class SearchBarContextComponent extends React.Component<SearchBarContextComponen
     return "";
   }
 
-  private loadSearchFromLocation() {
-    const searchText = this.getSearchTextFromLocation();
-    this.setState({
-      searchText,
-      pendingSearchText: searchText,
-    });
-  }
+
 }
 
 export default SearchBarContextComponent;

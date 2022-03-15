@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { RouteComponentProps } from "@reach/router";
 
-import { withPrefix } from "gatsby";
+import { navigate, withPrefix } from "gatsby";
 
 import GiftProviderInstance, { GiftResult } from "../providers/gift-provider";
 import { SearchBarContext } from "./search-context";
@@ -37,10 +37,6 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
 
   }
 
-  public componentDidMount(): void {
-    this.getMatches(this.context.searchText);
-  }
-
   public render() {
     if ((this.props.location?.state as any)?.source === "search-context") {
       (this.props.location.state as any).source = "self";
@@ -67,9 +63,27 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
 
   }
 
-  private async submitSearch(searchText: string, completion: () => void) {
+  public componentDidMount(): void {
+    this.getMatches(this.context.searchText);
+    if (!window) {
+      console.log("No window for componentDidMount");
+      return;
+    }
+    window.addEventListener("popstate", this.handlePopState.bind(this));
+  }
+
+  public componentWillUnmount(): void {
+    if (!window) {
+      console.log("No window for componentWillUnmount");
+      return;
+    }
+    window.removeEventListener("popstate", this.handlePopState.bind(this));
+  }
+
+
+  private async submitSearch(searchText: string, completion: (override?: string, addToHistory?:boolean) => void, addToHistory: boolean = true) {
     await this.getMatches(searchText);
-    completion();
+    completion(searchText, addToHistory);
   }
 
   private async getMatches(searchText: string) {
@@ -103,6 +117,24 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
       hasMore,
       isSearching: false,
     });
+  }
+
+  private handlePopState() {
+    if (this.props.location.pathname.indexOf(withPrefix("/gifts")) >= 0) {
+      const newSearchText = this.getSearchTextFromLocation();
+      if (newSearchText.length > 0) {
+        this.submitSearch(newSearchText, this.context.submitSearch, false);
+      }
+    }
+  }
+
+  private getSearchTextFromLocation(): string {
+    if (this.props.location && this.props.location.search) {
+      const params = new URLSearchParams(this.props.location.search);
+      const query = params.get("search").replace("+", " ");
+      return query;
+    }
+    return "";
   }
 }
 
