@@ -36,7 +36,7 @@ class GiftItemComponent extends React.Component<GiftItemComponentProps, GiftItem
       )
     }
     return (
-      <li className="mt-5 w-[340px] sm:w-[420px] h-[480px] border rounded p-4 border-stone-200 bg-stone-50 hover:bg-white dark:bg-gray-900 dark:border-gray-800 dark:hover:bg-gray-800 overflow-hidden" key={item.id}>
+      <li className="mt-5 w-[340px] sm:w-[420px] h-[480px] border rounded p-4 border-bg-light-border dark:bg-bg-dark hover:bg-stone-50 dark:border-bg-dark-border dark:hover:bg-bg-dark-hover overflow-hidden" key={item.id}>
         <a target="_blank" rel="noopener" href={item.url}>
           <p className="text-2xl">{item.title}</p>
           <div className="flex flex-row items-baseline">

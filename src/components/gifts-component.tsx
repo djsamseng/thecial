@@ -5,6 +5,40 @@ import { GiftResultProviderContext } from "./gift-result-provider-context";
 import { GiftResult } from "../providers/base-gift-provider";
 
 
+const EndOfResultsComponent = ({ headline, }: { headline: string, }) => {
+  const emailSubject = encodeURIComponent("Help Me Find a Gift");
+  const emailBody = (`Hey,\n
+    I'm looking for a gift for a [Friend/Coworker/Mom/Brother/Fill In].\n
+    It's for a [Birthday/Anniversary/Thank You/Baby Shower/Fill In].\n
+    They really enjoy [Cooking/Golf/Pet Puppy/Gardening/Partying/Fill In].\n
+    They are also really good at [Making People Laugh/Driving Slowly/Fill In].\n
+    They are passionate about [Job as a Nurse/Volunteering at a Food Pantry/Fill In].\n
+    Some of their big recent accomplishments are they [Wrote a book/Ran a Marathon/Fill In].\n
+    My budget is [$0-$50/Fill In] but flexible.
+    It needs to be delivered in [United States/Fill In] within [3 weeks/Fill In].\n Any ideas?
+  `);
+  return (
+    <div className="pt-5 pb-20 px-3 flex flex-col items-center">
+      <span className="text-xl md:text-4xl lg:text-5xl">{headline}</span>
+      <span className="text-md mt-2">If you can't find something great, <a className="underline italic" href={`mailto:gatherbadger@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(emailBody)}`}>
+        send me an email
+        </a> and I'll start looking!
+      </span>
+      <p className="border rounded-md mt-5 p-5 space-y-2">
+        {
+          emailBody.split("\n").map(line => {
+            return (
+              <div>
+                <span>{line}</span>
+              </div>
+
+            );
+          })
+        }
+      </p>
+    </div>
+  )
+}
 
 type GiftsSearchComponentProps = {};
 type GiftsSearchComponentState = {
@@ -36,13 +70,12 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
 
 
   public render() {
-    const { searchMatches, totalResults } = this.context as React.ContextType<typeof GiftResultProviderContext>;
+    const { searchMatches, totalResults, isSearching } = this.context as React.ContextType<typeof GiftResultProviderContext>;
     const matches = searchMatches as Array<GiftResult>;
-    if (matches.length == 0) {
+
+    if (matches.length == 0 && !isSearching) {
       return (
-        <div className="pt-5 pb-20 px-3 items-center">
-          Nothing Found!
-        </div>
+        <EndOfResultsComponent headline="Hmm it seems we don't have that" />
       )
     }
     return (
@@ -60,11 +93,15 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
             })
           }
         </ul>
-        { matches.length < totalResults ? (
+        { isSearching ? (
+          <div className="pt-5 pb-20 px-3 flex flex-col items-center text-2xl">
+            Searching ...
+          </div>
+        ) : matches.length < totalResults ? (
           <div className="flex flex-col items-center mx-14">
             <button type="submit" onClick={this.onLoadMore.bind(this)}>{ matches.length < totalResults ? ("Load More") : ("") }</button>
           </div>
-        ): (<div></div>)}
+        ): (<EndOfResultsComponent headline="That's it folks!" />)}
 
       </div>
     )

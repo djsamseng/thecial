@@ -28,7 +28,7 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
         <SEOComponent title="Find the Perfect Gift" titleTemplate="Gather Badger | %s"/>
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl sm:text-5xl ">Spark your creativity</h1>
+            <h1 className="text-3xl sm:text-5xl">Spark your creativity</h1>
             <h2 className="text-center">Explore Our One of a Kind Gift Ideas</h2>
           </div>
           <div className="border-b dark:border-gray-700 self-stretch pb-10 px-3">

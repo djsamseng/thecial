@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin")
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
@@ -11,7 +12,24 @@ module.exports = {
         'xs': '300px',
       },
       fontFamily: {
-        "headline": ["Guardian-EgypTT","Charter","Charter Bitstream","Cambria","Noto Serif Light","Droid Serif","Georgia","serif"]
+        "headline": ["Guardian-EgypTT","Charter","Charter Bitstream","Cambria","Noto Serif Light","Droid Serif","Georgia","serif"],
+      },
+      colors: {
+        // Dark theme
+        'dark-blue-bg-500': '#14274F',
+        'dark-gray-fg-500': '#ECE7E3',
+        'badger-tail': '#FCEBAC',
+
+        'bg-light': 'rgb(255, 255, 255)', // white
+        'bg-light-hover': 'rgb(250 250 249)', // stone-50
+        'bg-light-border': 'rgb(231 229 228)', // stone-200
+        'bg-dark': 'rgb(17 24 39)', // gray-900
+        'bg-dark-hover': 'rgb(31 41 55)', // gray-800
+        'bg-dark-border': 'rgb(31 41 55)', // gray-800
+        'fg-light': 'rgb(226 232 240)', // text-slate-200
+        'fg-light-capture': 'rgb(241 245 249)', // text-slate-100
+        'fg-dark': 'rgb(51 65 85)', // 'text-slate-700'
+        'fg-dark-capture': 'rgb(15 23 42)' // text-slate-900
       },
 
       keyframes: {

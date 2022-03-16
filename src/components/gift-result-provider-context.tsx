@@ -33,7 +33,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     this.state = {
       searchMatches: [],
       isSearching: false,
-      totalResults: 0,
+      totalResults: 1,
     };
 
   }
@@ -44,7 +44,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
       this.setState({
         searchMatches: [],
         isSearching: false,
-        totalResults: 0,
+        totalResults: 1,
       });
       this.getMatches("");
     }
@@ -94,8 +94,9 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
     }
     if (this.props.location && this.props.location.pathname.indexOf(withPrefix("/gifts")) >= 0) {
       this.setState({
+        searchMatches: [],
         isSearching: true,
-        totalResults: 0,
+        totalResults: 1,
       });
       console.log("Will search:", searchText);
       const { matches, totalResults } = await GiftProviderInstance.getGiftsForSearch(searchText);
@@ -110,7 +111,7 @@ class GiftResultsProviderComponent extends React.Component<GiftResultsProviderCo
   private async loadMore(searchText: string, totalCount: number) {
     this.setState({
       isSearching: true,
-      totalResults: 0,
+      totalResults: 1,
     });
     const { matches, totalResults } = await GiftProviderInstance.getGiftsForSearch(searchText, totalCount);
     this.setState({

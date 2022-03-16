@@ -4,8 +4,8 @@ import { stemmer } from "stemmer";
 
 import { BaseGiftProvider, GiftResult } from "./base-gift-provider";
 
-// const supabaseUrl = "http://localhost:54321";
-// const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs";
+//const supabaseUrl = "http://localhost:54321";
+//const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs";
 const supabaseUrl = "https://fbzpfjeadselmgdvgitu.supabase.co";
 const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZienBmamVhZHNlbG1nZHZnaXR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDcyMDk0MDUsImV4cCI6MTk2Mjc4NTQwNX0.cQ6AYTxIpp48k276gyY5A1at_LAjqWURsUJzmryTTdc";
 
@@ -45,6 +45,7 @@ async function getGiftsSupabase(start: number, limit: number): Promise<Array<Sup
   const { data, error, status, count } = await supabase.from("gifts")
     .select("id, title, img, url, custom_desc, score", { count: "exact" })
     .order("score", { ascending: false })
+    .order("id", { ascending: true })
     .range(start, start+limit) as {
       data: Array<SearchResult>;
       error?: any;

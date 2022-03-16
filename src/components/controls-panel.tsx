@@ -71,7 +71,7 @@ class ControlsPanel extends React.Component<ControlsPanelProps, ControlsPanelSta
     let navbar = (<div></div>);
     if (this.state.isNavOpen) {
       navbar = (
-        <div className="absolute z-20 bg-white border-2 border-slate-700 dark:border-white dark:bg-slate-700 rounded-lg top-14 min-w-fit w-3/4 min-h-fit">
+        <div className="absolute z-20 bg-white border-2 border-slate-700 dark:bg-bg-dark dark:border-white rounded-lg top-14 min-w-fit w-3/4 min-h-fit">
           <NavBar showVertical={true} />
         </div>
       )

@@ -6,7 +6,6 @@ import GiftResultProviderComponent from "./gift-result-provider-context";
 
 import HeaderComponent from "./header-component";
 import FooterComponent from "./footer-component";
-import SvgIconBackground from "./svg-icon-background";
 
 type LayoutComponentProps = {
   pageTitle: string;
@@ -26,14 +25,16 @@ class LayoutComponent extends React.Component<LayoutComponentProps, LayoutCompon
     return (
       <SearchBarContextComponent location={this.props.location}>
         <GiftResultProviderComponent location={this.props.location}>
-          <div className="relative bg-transparent flex flex-col min-h-screen w-full justify-between font-roboto dark:text-slate-200">
-            <HeaderComponent />
-            <main className="mb-auto min-h-[600px]">
-              {this.props.children}
-            </main>
-            <FooterComponent />
-            <SvgIconBackground />
+          <div className="relative">
+            <div className="relative bg-transparent flex flex-col min-h-screen w-full justify-between dark:bg-bg-dark text-fg-dark dark:text-fg-light">
+              <HeaderComponent />
+              <main className="mb-auto min-h-[600px]">
+                {this.props.children}
+              </main>
+              <FooterComponent />
+            </div>
           </div>
+
         </GiftResultProviderComponent>
       </SearchBarContextComponent>
     )
