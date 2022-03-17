@@ -1,0 +1,54 @@
+{
+    "title": "Best Gifts For Gardeners",
+    "slug": "best-gifts-for-gardeners",
+    "gifts": [
+        {
+            "id": 15,
+            "title": "DIY Garden Markers",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07SBVHMTJ&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Whaline-Waterproof-Pointed-Eco-Friendly-Vegetables/dp/B07SBVHMTJ?crid=1I14C9IWJ22Q7&keywords=wood+garden+markers&qid=1646422080&sprefix=wood+garden+markers%2Caps%2C75&sr=8-4&linkCode=li3&tag=gatherbadger-20&linkId=af3a994bbb3bd65fe413553edf1999f5&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 0
+        },
+        {
+            "id": 51,
+            "title": "Personalized Garden Shovel",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08MDBPSRL&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Zakally-Personalized-Custom-Garden-Engraved/dp/B08MDBPSRL?crid=3LX8850BYM6M&keywords=personalized+gardening&qid=1647381311&sprefix=personalized+gardening%2Caps%2C77&sr=8-5&linkCode=li3&tag=gatherbadger-20&linkId=88d56bbdd25cbb9b5d5bb04243c17cab&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 1
+        },
+        {
+            "id": 50,
+            "title": "Personalized Garden Stone",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B075X33WRJ&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/GiftsForYouNow-Personalized-Engraved-Memorial-Garden/dp/B075X33WRJ?crid=YASRAJDEVBNO&keywords=personalized+garden&qid=1647381232&sprefix=personalized+garden%2Caps%2C85&sr=8-10&linkCode=li3&tag=gatherbadger-20&linkId=0b798f4ffc7888601460ed1cda8e0049&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 2
+        },
+        {
+            "id": 16,
+            "title": "Dog Prank Gift Box",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07W4FLX96&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Prank-Pack-Hide-Poo-Prank/dp/B07W4FLX96?crid=38JY0XNXTSH7W&keywords=prank+box&qid=1646422154&sprefix=prank+box%2Caps%2C75&sr=8-8&linkCode=li3&tag=gatherbadger-20&linkId=a1574d77ea50606ab8a3a6776be3bfdb&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 3
+        },
+        {
+            "id": 26,
+            "title": "Deer Wine Pourer",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00ZO1E9MK&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Deer-Animal-Pourer-Aerator-Available/dp/B00ZO1E9MK?crid=28NMFQRA0W5US&keywords=dog+wine+pourer&qid=1646423027&sprefix=dog+wine+pourer%2Caps%2C78&sr=8-5&linkCode=li3&tag=gatherbadger-20&linkId=252fab5ecd8c199d920fe7611a8622f8&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 4
+        },
+        {
+            "id": 68,
+            "title": "Baby Groot Flower Pot",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B088R6ZZJ2&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Flowerpot-Succulent-Ornament-Christmas-Birthday/dp/B088R6ZZJ2?keywords=groot&qid=1647383048&sr=8-2&linkCode=li3&tag=gatherbadger-20&linkId=4b0ce9913517631c8fa8a8e54862b4cd&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 5
+        }
+    ]
+}
