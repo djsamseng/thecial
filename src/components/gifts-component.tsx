@@ -95,7 +95,7 @@ class GiftsSearchComponent extends React.Component<GiftsSearchComponentProps, Gi
         </ul>
         { isSearching ? (
           <div className="pt-5 pb-20 px-3 flex flex-col items-center text-2xl">
-            Searching ...
+            Gathering ...
           </div>
         ) : matches.length < totalResults ? (
           <div className="flex flex-col items-center mx-14">
