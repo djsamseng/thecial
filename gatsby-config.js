@@ -21,6 +21,20 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        path: `${__dirname}/data/lists`,
+        typeName: `lists`
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "lists",
+        path: `${__dirname}/data/lists`
+      }
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
@@ -38,10 +52,10 @@ module.exports = {
         name: `GatherBadger`,
         short_name: `GatherBadger`,
         start_url: `/`,
-        background_color: `#111827`,
+        // background_color: `#111827`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
-        theme_color: `#111827`,
+        // theme_color: `#111827`,
         display: `minimal-ui`,
         icon: `src/images/gift-logo-512-512.png`, // This path is relative to the root of the site.
       },

@@ -69,13 +69,11 @@ function SEO({ description, lang, meta, title, titleTemplate }: {
         {
           name: `twitter:description`,
           content: metaDescription,
-        },
-        {
-          name: `theme-color`,
-          content: '#111827'
         }
       ].concat(meta)}
     >
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111827" />
     </Helmet>
   )
 }

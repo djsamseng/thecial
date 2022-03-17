@@ -14,7 +14,7 @@ class NavBar extends React.Component<NavBarProps, NavBarState> {
       { text: "Home", href: "/" },
       { text: "Gifts", href: "/gifts" },
       { text: "Guide", href: "/guide" },
-      { text: "Blog", href: "/blog" },
+      { text: "Lists", href: "/lists" },
     ].map(item => {
       return (
         <li className="h-12 w-12 flex flex-row items-center">
