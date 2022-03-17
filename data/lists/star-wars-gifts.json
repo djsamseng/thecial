@@ -1,0 +1,46 @@
+{
+    "title": "Star Wars Gifts",
+    "slug": "star-wars-gifts",
+    "gifts": [
+        {
+            "id": 23,
+            "title": "Star Wars Popcorn Maker",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07WW2KRKN&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Uncanny-Brands-Popcorn-Operational-Appliance/dp/B07WW2KRKN?crid=15IX9IDJA9798&keywords=snoopy+popcorn+maker&qid=1646422839&sprefix=snoopy+popcorn+maker%2Caps%2C64&sr=8-17&linkCode=li3&tag=gatherbadger-20&linkId=37b150daf8d11adab24dd43287f3ece5&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 0
+        },
+        {
+            "id": 107,
+            "title": "Personalized Star Wars Drinking Glass",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07QLXMXHJ&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Engraved-Star-Wars-Gifts-Men/dp/B07QLXMXHJ?crid=1K7RTCCZO9N9B&keywords=personalized+star+wars+glass&qid=1647556379&sprefix=personalized+star+wars+glass%2Caps%2C76&sr=8-6&linkCode=li3&tag=gatherbadger-20&linkId=980df7966f157403cc471f37f75ba819&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 1
+        },
+        {
+            "id": 108,
+            "title": "Best Yoda Dad Mug",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08ZGHDT4Q&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Personalized-Telling-Truth-Unique-Fathers/dp/B08ZGHDT4Q?crid=1I2HH2VXQJGI3&keywords=personalized+yoda&qid=1647556486&sprefix=personalized+yoda%2Caps%2C78&sr=8-16&linkCode=li3&tag=gatherbadger-20&linkId=7c2bc4024756ed9715922a908a378dad&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 2
+        },
+        {
+            "id": 109,
+            "title": "Personalized Yoda Cutting Board",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08MYH6Q87&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Personalized-Cutting-Significant-handcrafted-Christmas/dp/B08MYH6Q87?crid=1I2HH2VXQJGI3&keywords=personalized+yoda&qid=1647556550&sprefix=personalized+yoda%2Caps%2C78&sr=8-21&linkCode=li3&tag=gatherbadger-20&linkId=00e098efe63542c308787a5411639fab&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 3
+        },
+        {
+            "id": 110,
+            "title": "Personalized Star Wars Golf Marker",
+            "img": "//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07VC7BGMM&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=gatherbadger-20&language=en_US",
+            "url": "https://www.amazon.com/Golf-Gifts-Ball-Marker-Accessories/dp/B07VC7BGMM?crid=3FDVJTCE2PMDV&keywords=clone+wars+personalized&qid=1647556845&sprefix=clone+wars+personalized%2Caps%2C61&sr=8-46&linkCode=li3&tag=gatherbadger-20&linkId=34bcbbbc7f016fd03b6021acc4fb8c61&language=en_US&ref_=as_li_ss_il",
+            "list_desc": "",
+            "order": 4
+        }
+    ]
+}
