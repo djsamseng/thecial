@@ -14,19 +14,19 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
 
   public render() {
     return (
-      <header className="border-b dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-2 sm:mb-5">
+      <header className="border-b dark:border-gray-700 lg:w-full lg:top-0 lg:left-0 mb-2 sm:mb-5 xl:pb-2">
         <section className="ml-2 xs:ml-5 flex flex-col">
           <div className="flex flex-row justify-between">
-              <div className="flex flex-1 flex-row py-1 w-full justify-between">
+              <div className="flex flex-1 flex-row pt-2 w-full justify-between">
                 <TitleComponent />
                 <div className="hidden flex-1 sm:flex flex-row items-center shrink-0 min-w-fit">
                   <SearchBar />
                 </div>
-                <div className="hidden justify-self-end lg:flex flex-row items-center align-bottom">
+                <div className="hidden justify-self-end xl:flex flex-row items-center align-bottom">
                   <NavBar />
                   <ControlsPanel />
                 </div>
-                <div className="flex flex-row lg:hidden justify-self-end items-center align-bottom">
+                <div className="flex flex-row xl:hidden justify-self-end items-center align-bottom">
                   <ControlsPanel />
                 </div>
               </div>
@@ -36,7 +36,7 @@ class HeaderComponent extends React.Component<HeaderComponentProps, HeaderCompon
         <section className="flex sm:hidden flex-1 flex-row py-1 justify-center items-center w-full ">
           <SearchBar />
         </section>
-        <section className="hidden sm:block lg:hidden">
+        <section className="hidden sm:block xl:hidden">
           <NavBar />
         </section>
       </header>

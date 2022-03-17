@@ -70,6 +70,10 @@ function SEO({ description, lang, meta, title, titleTemplate }: {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `theme-color`,
+          content: '#111827'
+        }
       ].concat(meta)}
     >
     </Helmet>

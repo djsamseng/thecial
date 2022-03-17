@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.gatherbadger.com",
     title: "Gather Badger",
-    description: "Find the perfect gift. Search our hand crafted list of gifts or use our idea generator to come up with the perfect gift. We believe in a unique and special gift that will leave them beloved",
+    description: "Find the perfect gift. Searching our hand crafted gift list or use our idea generator to come up with a truly unique gift. The perfect present is awaiting. Leave that special someone beloved with a personalized gift",
     author: "Gather Badger"
   },
   plugins: [
@@ -38,12 +38,12 @@ module.exports = {
         name: `GatherBadger`,
         short_name: `GatherBadger`,
         start_url: `/`,
-        background_color: `#335541`,
+        background_color: `#111827`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        theme_color: `#111827`,
         display: `minimal-ui`,
-        icon: `src/images/badger-logo-square-48-48.png`, // This path is relative to the root of the site.
+        icon: `src/images/gift-logo-512-512.png`, // This path is relative to the root of the site.
       },
     },
   ],
